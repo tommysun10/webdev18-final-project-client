@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private userService: UserServiceClient, private route: ActivatedRoute) { }
 
   updateUser() {
+
     this.userService.updateUser(this.user).then(() => {
       return this.userService.currentUser();
     })
@@ -37,7 +38,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    }
+    this.userService.currentUser()
+      .then(user =>
+        this.user = user)
+    };
 
 }

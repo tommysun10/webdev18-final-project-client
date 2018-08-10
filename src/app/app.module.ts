@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { Constants } from './common/constants';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpModule,
     routing
   ],
-  providers: [UserServiceClient],
+  providers: [Constants, UserServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
