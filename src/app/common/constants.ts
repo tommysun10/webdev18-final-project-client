@@ -11,6 +11,9 @@ export class Constants {
   REGISTER_URL = this.BASE_API_URL + "/register";
   USER_URL = this.BASE_API_URL + "/user";
 
+  //Admin things 
+  USERS_URL = this.BASE_API_URL + "/users";
+
   // Cuisine Services
   CUISINE_URL = this.BASE_API_URL + "/cuisine";
   RECIPE_URL = this.BASE_API_URL + "/recipes";
