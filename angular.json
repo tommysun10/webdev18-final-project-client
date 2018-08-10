@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "webdev-final-proj": {
+    "hello-world-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/webdev-final-proj",
+            "outputPath": "dist/hello-world-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
+
             ],
             "scripts": []
           },
@@ -50,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "webdev-final-proj:build"
+            "browserTarget": "hello-world-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "webdev-final-proj:build:production"
+              "browserTarget": "hello-world-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "webdev-final-proj:build"
+            "browserTarget": "hello-world-app:build"
           }
         },
         "test": {
@@ -95,7 +97,7 @@
         }
       }
     },
-    "webdev-final-proj-e2e": {
+    "hello-world-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +105,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "webdev-final-proj:serve"
+            "devServerTarget": "hello-world-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "webdev-final-proj:serve:production"
+              "devServerTarget": "hello-world-app:serve:production"
             }
           }
         },
@@ -123,5 +125,5 @@
       }
     }
   },
-  "defaultProject": "webdev-final-proj"
+  "defaultProject": "hello-world-app"
 }

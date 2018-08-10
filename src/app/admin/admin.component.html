@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-4">
+    <h2>Courses</h2>
+    <ul class="list-group">
+      <li (click)="selectCourse(course)"
+          [ngClass]="{'active': course.id == selectedCourseId}"
+          *ngFor="let course of courses"
+          class="list-group-item">
+        {{course.title}}
+      </li> 
+    </ul>
+  </div>
+  <div class="col-4">
+    <h2>Sections</h2>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Capacity</th>
+          <th>&nbsp;</th>
+        </tr>
+        <tr> 
+          <th> <input [(ngModel)]="newSection.title" placeholder="title"></th>
+          <th> <input [(ngModel)]="newSection.capacity" class="form-control" placeholder="capacity"></th>
+          <th> <button (click)="saveSection()" type="button" class="btn btn-primary btn-block">Save</button>
+          <th> <button (click)="createSection()" type="button" class="btn btn-primary btn-block">Create</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let section of sections">
+          <tr>
+              <td>{{section.title}}</td>
+              <td>{{section.capacity}}</td>
+              <button (click)="deleteSection(section)" type="button" class="btn btn-primary btn-block">Remove</button>
+              <button (click)="updateSection(section)" type="button" class="btn btn-primary btn-block">Update</button>
+            </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
