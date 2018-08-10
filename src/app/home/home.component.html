@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <h1>Cuisines</h1>
+          </li>
+      <li (click)="selectCuisine(cuisine)"
+          *ngFor="let cuisine of cuisines"
+          class="list-group-item">
+        {{cuisine.title}}
+        <button class="btn" (click)="viewCuisine(cuisine)"> <i class="fa fa-eye"></i></button>
+      </li> 
+    </ul>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { Constants } from './common/constants';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { Constants } from './common/constants';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
