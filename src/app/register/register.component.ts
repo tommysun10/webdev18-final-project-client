@@ -22,8 +22,7 @@ export class RegisterComponent implements OnInit {
     else {
       const newUser = {
         username: username,
-        password1: password1,
-        password2: password2,
+        password: password1,
       };
       this.userService.register(newUser)
         .then(u => {
@@ -33,7 +32,7 @@ export class RegisterComponent implements OnInit {
           else if (u.status == 200) {
             var user = {
               username: newUser.username,
-              password: newUser.password1,
+              password: newUser.password,
             }
             this.userService.login(user).then(response => {
                 this.router.navigate(['profile']);
