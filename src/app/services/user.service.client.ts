@@ -12,7 +12,7 @@ export class UserServiceClient {
 	login = (user) =>
 	fetch(this.constants.LOGIN_URL, {
 		method: 'post',
-		//credentials: 'include',
+		credentials: 'include',
 		headers: {
 			'Content-type': 'application/json'
 		},
@@ -22,7 +22,7 @@ export class UserServiceClient {
 	register = (newUser) =>
 	fetch(this.constants.REGISTER_URL, {
 		method: 'post',
-		//credentials: 'include',
+		credentials: 'include',
 		headers: {
 			'Content-type': 'application/json'
 		},
