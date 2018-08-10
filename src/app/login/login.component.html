@@ -1,0 +1,11 @@
+<h1 class="header">Login</h1>
+<input [(ngModel)]="username"
+       class="form-control"
+       placeholder="username"/>
+<input [(ngModel)]="password"
+       class="form-control"
+       placeholder="password"/>
+<button (click)="login(username, password)"
+        class="btn btn-primary btn-block">
+  Login
+</button>
