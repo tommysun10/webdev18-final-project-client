@@ -13,14 +13,20 @@
           <th scope="col">Role</th>
           <th>&nbsp;</th>
         </tr>
-        <tr> 
+        <tr>
           <th> <input [(ngModel)]="newUser.username" placeholder="username"></th>
           <th> <input [(ngModel)]="newUser.password" placeholder="password"></th>
           <th> <input [(ngModel)]="newUser.firstName" placeholder="John"></th>
           <th> <input [(ngModel)]="newUser.lastName" placeholder="Smith"></th>
           <th> <input [(ngModel)]="newUser.phone" class="form-control" placeholder="xxx-xxx-xxxx"></th>
           <th> <input [(ngModel)]="newUser.email" class="form-control" placeholder="jsmith@gmail.com"></th>
-          <th> <input [(ngModel)]="newUser.role" class="form-control" placeholder="pro"></th>
+          <th>
+            <select id="roleFld" class="form-control" [(ngModel)]="newUser.role">
+              <option value="ADMIN">Admin</option>
+              <option value="GENERAL">General</option>
+              <option value="PRO">Professional</option>
+            </select>
+          </th>
           <th> <button (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button>
           <th> <button (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button>
           </th>
