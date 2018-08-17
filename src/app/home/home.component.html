@@ -8,13 +8,28 @@
             <th> <input [(ngModel)]="newCuisine.title" placeholder="title"></th>
             <th> <button (click)="createCuisine()" type="button" class="btn btn-primary btn-block">Create</button>  
         </li>
-      <li (click)="selectCuisine(cuisine)"
-          *ngFor="let cuisine of cuisines"
-          class="list-group-item"
-          [ngClass]="{'active': cuisine.id == selectedCuisine.id}" >
-          {{cuisine.title}}
+        <li (click)="selectCuisine(cuisine)" [ngClass]="{'active': cuisine.id == selectedCuisine.id}" *ngFor="let cuisine of cuisines"
+        class="list-group-item">
+        {{cuisine.title}}
         <button class="btn" (click)="viewCuisine(cuisine)"> <i class="fa fa-eye"></i></button>
-      </li> 
+      </li>
     </ul>
   </div>
+  <div class="col-8">
+      <h1>Recipes</h1>
+      <li> 
+          <th> <input [(ngModel)]="newRecipe.title" placeholder="title"></th>
+          <th> <button (click)="createRecipe(selectedCuisine)" type="button" class="btn btn-primary btn-block">Create</button>  
+      </li>
+      <li *ngFor="let recipe of recipes"> 
+      <div className="card">
+          <img className="card-img-top"
+               src="https://picsum.photos/300/200"/>
+          <div className="card-body">
+           <h5 className="card-title">recipe.title</h5>
+           <p className="card-text">Card text.</p>
+          </div>
+        </div>
+          </li>
+      </div>
 </div>
