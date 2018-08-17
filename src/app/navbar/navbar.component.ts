@@ -10,7 +10,11 @@ import {Route, Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 	isLoggedIn: boolean;
-  user: {username:''};
+  isAdmin : boolean;
+  user: {
+    username:"",
+    role:"",
+};
 
   constructor(private userService: UserServiceClient,
   	private router: Router,
@@ -18,20 +22,27 @@ export class NavbarComponent implements OnInit {
     this.update();}
 
     logout() {
-      this.constants.isLoggedIn = false;
       this.userService.logout();
     }
 
     update() {
       this.userService.currentUser()
       .then(user => this.user = user)
-      .then(() => {if (this.user.username) {
-        this.isLoggedIn = true;
-      }})
+      .then(() => {
+        if (this.user.username) {
+          this.isLoggedIn = true;
+        } 
+        if (this.user.role.valueOf() == "ADMIN".valueOf()) {
+          this.isAdmin = true;
+        }
+
+
+      })
     }
 
 
     ngOnInit() {
       this.update();
 
+    }
   }
