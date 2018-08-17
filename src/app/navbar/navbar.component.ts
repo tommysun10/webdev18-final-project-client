@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   user: {
     username:"",
     role:"",
-};
+  };
 
   constructor(private userService: UserServiceClient,
   	private router: Router,
@@ -23,6 +23,9 @@ export class NavbarComponent implements OnInit {
 
     logout() {
       this.userService.logout();
+      this.router.navigate(['home']);
+      
+      window.location.reload();
     }
 
     update() {
