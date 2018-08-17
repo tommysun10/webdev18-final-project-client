@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   password: String;
 
   constructor(private router: Router,
-              private userService: UserServiceClient) { }
+    private userService: UserServiceClient) { }
 
   login = (username, password) => {
     const user = {
@@ -21,13 +21,14 @@ export class LoginComponent implements OnInit {
       password: password
     };
     this.userService.login(user).then(response => {
-        if (response.status == 200) {
-          this.router.navigate(['profile']);
-        }
-        else {
-          alert('invalid credentials');
-        }
-      })
+      if (response.status == 200) {
+        this.router.navigate(['profile'])
+        window.location.reload();
+      }
+      else {
+        alert('invalid credentials');
+      }
+    })
   }
 
   ngOnInit() {

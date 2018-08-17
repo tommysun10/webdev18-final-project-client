@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { Constants } from './common/constants';
 import { HomeComponent } from './home/home.component';
 import { CuisineServiceClient } from './services/cuisine.service.client';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CuisineServiceClient } from './services/cuisine.service.client';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -25,20 +25,22 @@ export class RegisterComponent implements OnInit {
         password: password1,
       };
       this.userService.register(newUser)
-        .then(u => {
-          if (u.status == 412) {
-            alert("Username is already taken");
+      .then(u => {
+        if (u.status == 412) {
+          alert("Username is already taken");
+        }
+        else if (u.status == 200) {
+          var user = {
+            username: newUser.username,
+            password: newUser.password,
           }
-          else if (u.status == 200) {
-            var user = {
-              username: newUser.username,
-              password: newUser.password,
-            }
-            this.userService.login(user).then(response => {
-                this.router.navigate(['profile']);
-            })
+          this.userService.login(user).then(response => {
+            this.router.navigate(['profile']);
+            window.location.reload();
           }
-        })
+          )
+        }
+      })
     }
   }
 

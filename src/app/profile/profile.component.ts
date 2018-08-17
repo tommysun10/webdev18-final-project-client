@@ -13,7 +13,9 @@ export class ProfileComponent implements OnInit {
   user = {};
   sections = {};
 
-  constructor(private router: Router, private userService: UserServiceClient, private route: ActivatedRoute) { }
+  constructor(private router: Router, 
+    private userService: UserServiceClient, 
+    private route: ActivatedRoute) { }
 
   updateUser() {
     this.userService.updateUser(this.user).then(() => {
@@ -25,6 +27,7 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigate(['login']);
+    window.location.reload();
   }
 
   goToAdminPage(role) {
