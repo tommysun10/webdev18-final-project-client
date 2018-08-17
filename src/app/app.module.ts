@@ -14,6 +14,7 @@ import { Constants } from './common/constants';
 import { HomeComponent } from './home/home.component';
 import { CuisineServiceClient } from './services/cuisine.service.client';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RecipeServiceClient } from './services/recipe.service.client';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpModule,
     routing
   ],
-  providers: [Constants, UserServiceClient, CuisineServiceClient],
+  providers: [Constants, UserServiceClient, CuisineServiceClient, RecipeServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
