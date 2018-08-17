@@ -10,6 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { Constants } from './common/constants';
+import { HomeComponent } from './home/home.component';
+import { CuisineServiceClient } from './services/cuisine.service.client';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpModule,
     routing
   ],
-  providers: [UserServiceClient],
+  providers: [Constants, UserServiceClient, CuisineServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

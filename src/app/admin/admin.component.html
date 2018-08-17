@@ -1,38 +1,48 @@
 <div class="row">
   <div class="col-4">
-    <h2>Courses</h2>
-    <ul class="list-group">
-      <li (click)="selectCourse(course)"
-          [ngClass]="{'active': course.id == selectedCourseId}"
-          *ngFor="let course of courses"
-          class="list-group-item">
-        {{course.title}}
-      </li> 
-    </ul>
-  </div>
-  <div class="col-4">
-    <h2>Sections</h2>
+    <h2>Users</h2>
     <table class="table table-hover">
     <thead>
         <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Capacity</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
           <th>&nbsp;</th>
         </tr>
-        <tr> 
-          <th> <input [(ngModel)]="newSection.title" placeholder="title"></th>
-          <th> <input [(ngModel)]="newSection.capacity" class="form-control" placeholder="capacity"></th>
-          <th> <button (click)="saveSection()" type="button" class="btn btn-primary btn-block">Save</button>
-          <th> <button (click)="createSection()" type="button" class="btn btn-primary btn-block">Create</button>
+        <tr>
+          <th> <input [(ngModel)]="newUser.username" placeholder="username"></th>
+          <th> <input [(ngModel)]="newUser.password" placeholder="password"></th>
+          <th> <input [(ngModel)]="newUser.firstName" placeholder="John"></th>
+          <th> <input [(ngModel)]="newUser.lastName" placeholder="Smith"></th>
+          <th> <input [(ngModel)]="newUser.phone" class="form-control" placeholder="xxx-xxx-xxxx"></th>
+          <th> <input [(ngModel)]="newUser.email" class="form-control" placeholder="jsmith@gmail.com"></th>
+          <th>
+            <select id="roleFld" class="form-control" [(ngModel)]="newUser.role">
+              <option value="ADMIN">Admin</option>
+              <option value="GENERAL">General</option>
+              <option value="PRO">Professional</option>
+            </select>
+          </th>
+          <th> <button (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button>
+          <th> <button (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button>
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let section of sections">
+      <tbody *ngFor="let user of users">
           <tr>
-              <td>{{section.title}}</td>
-              <td>{{section.capacity}}</td>
-              <button (click)="deleteSection(section)" type="button" class="btn btn-primary btn-block">Remove</button>
-              <button (click)="updateSection(section)" type="button" class="btn btn-primary btn-block">Update</button>
+              <td>{{user.username}}</td>
+              <td>****</td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.role}}</td>
+              <button (click)="deleteUser(user)" type="button" class="btn btn-primary btn-block">Remove</button>
+              <button (click)="updateUser(user)" type="button" class="btn btn-primary btn-block">Update</button>
             </tr>
     </tbody>
     </table>
