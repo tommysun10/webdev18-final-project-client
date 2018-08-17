@@ -1,11 +1,26 @@
-<h1 class="header">Login</h1>
-<input [(ngModel)]="username"
-       class="form-control"
-       placeholder="username"/>
-<input [(ngModel)]="password"
-       class="form-control"
-       placeholder="password"/>
-<button (click)="login(username, password)"
-        class="btn btn-primary btn-block">
-  Login
-</button>
+<div class = "container-fluid">
+	<h1 class="header">Login</h1>
+	<form>
+		<div class="form-group">
+			<input name = "username"
+			[(ngModel)]="username"
+			class="form-control"
+			placeholder="Username"/>
+		</div>
+		<div class="form-group">
+			<input name = "password"
+			[(ngModel)]="password"
+			class="form-control"
+			placeholder="Password"
+			type = "password"/>
+		</div>
+
+		<button (click)="login(username, password)"
+		class="btn btn-primary btn-block">
+		Login
+	</button>
+	<a class="btn btn-success btn-block"routerLink="/register" >
+		Register
+	</a>
+</form>
+</div>

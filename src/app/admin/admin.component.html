@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-4">
+  <div class="col-12">
     <h2>Users</h2>
     <table class="table table-hover">
     <thead>
@@ -12,22 +12,23 @@
           <th scope="col">Email</th>
           <th scope="col">Role</th>
           <th>&nbsp;</th>
+          <th>&nbsp;</th>
         </tr>
         <tr>
-          <th> <input [(ngModel)]="newUser.username" placeholder="username"></th>
-          <th> <input [(ngModel)]="newUser.password" placeholder="password"></th>
-          <th> <input [(ngModel)]="newUser.firstName" placeholder="John"></th>
-          <th> <input [(ngModel)]="newUser.lastName" placeholder="Smith"></th>
-          <th> <input [(ngModel)]="newUser.phone" class="form-control" placeholder="xxx-xxx-xxxx"></th>
-          <th> <input [(ngModel)]="newUser.email" class="form-control" placeholder="jsmith@gmail.com"></th>
+          <th> <input [(ngModel)]="newUser.username" class="form-control" placeholder="username"></th>
+          <th> <input [(ngModel)]="newUser.password" class="form-control" placeholder="password"></th>
+          <th> <input [(ngModel)]="newUser.firstName" class="form-control" placeholder="John"></th>
+          <th> <input [(ngModel)]="newUser.lastName" class="form-control" placeholder="Smith"></th>
+          <th> <input [(ngModel)]="newUser.phone"  class="form-control" placeholder="xxx-xxx-xxxx"></th>
+          <th> <input [(ngModel)]="newUser.email"  class="form-control" placeholder="jsmith@gmail.com"></th>
           <th>
-            <select id="roleFld" class="form-control" [(ngModel)]="newUser.role">
+            <select id="roleFld" [(ngModel)]="newUser.role">
               <option value="ADMIN">Admin</option>
               <option value="GENERAL">General</option>
               <option value="PRO">Professional</option>
             </select>
           </th>
-          <th> <button (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button>
+          <th> <button (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button> </th>
           <th> <button (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button>
           </th>
         </tr>
@@ -41,8 +42,8 @@
               <td>{{user.phone}}</td>
               <td>{{user.email}}</td>
               <td>{{user.role}}</td>
-              <button (click)="deleteUser(user)" type="button" class="btn btn-primary btn-block">Remove</button>
-              <button (click)="updateUser(user)" type="button" class="btn btn-primary btn-block">Update</button>
+              <td> <button (click)="deleteUser(user)" type="button" class="btn btn-primary btn-block">Remove</button> </td>
+              <td> <button (click)="updateUser(user)" type="button" class="btn btn-primary btn-block">Update</button> </td>
             </tr>
     </tbody>
     </table>
