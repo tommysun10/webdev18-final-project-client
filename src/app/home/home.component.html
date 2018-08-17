@@ -19,9 +19,8 @@
       <h1>Recipes</h1>
       <li> 
           <th> <input [(ngModel)]="newRecipe.title" placeholder="title"></th>
-          <th> <button (click)="createRecipe(selectedCuisine)" type="button" class="btn btn-primary btn-block">Create</button>  
+          <th> <button (click)="createRecipe()" type="button" class="btn btn-primary btn-block">Create</button>  
       </li>
-      <a href="/recipe/create"> COMPONENT</a>
       <li *ngFor="let recipe of recipes"> 
       <div className="card">
           <img className="card-img-top"

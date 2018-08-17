@@ -4,7 +4,7 @@
 	<div class="wbdv-form-group row">
 		<label class="col-sm-2 col-form-label">Recipe Title</label>
 		<div class="col-sm-10">
-			<input [(ngModel)]="recipe.title" class="form-control">
+			<input [(ngModel)]="recipe.title" class="form-control" placeholder="Super Awesome Recipe">
 		</div>
 	</div>
 	<span>
@@ -27,7 +27,8 @@
 	<div class="wbdv-form-group row">
 		<label for="lastName" class="col-sm-2 col-form-label">Ingredients: </label>
 		<div class="col-sm-10">
-			<input [(ngModel)]="ingredients" class="form-control" placeholder="Ingredients">
+			<textarea [(ngModel)]="ingredients" class="form-control" placeholder="Ingredients">
+			</textarea>
 		</div>
 	</div>
 	<span>
