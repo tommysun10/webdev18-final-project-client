@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  selectCuisine(cuisine) {
+    this.selectedCuisine = cuisine; 
+  }
+
   ngOnInit() {
     this.cuisineService.getCuisines().then(res => this.cuisines = res)
   }

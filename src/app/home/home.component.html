@@ -8,13 +8,11 @@
             <th> <input [(ngModel)]="newCuisine.title" placeholder="title"></th>
             <th> <button (click)="createCuisine()" type="button" class="btn btn-primary btn-block">Create</button>  
         </li>
-      <li (click)="selectCuisine(cuisine)"
-          *ngFor="let cuisine of cuisines"
-          class="list-group-item"
-          [ngClass]="{'active': cuisine.id == selectedCuisine.id}" >
-          {{cuisine.title}}
+        <li (click)="selectCuisine(cuisine)" [ngClass]="{'active': cuisine.id == selectedCuisine.id}" *ngFor="let cuisine of cuisines"
+        class="list-group-item">
+        {{cuisine.title}}
         <button class="btn" (click)="viewCuisine(cuisine)"> <i class="fa fa-eye"></i></button>
-      </li> 
+      </li>
     </ul>
   </div>
 </div>
