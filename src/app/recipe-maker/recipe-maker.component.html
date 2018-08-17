@@ -1,0 +1,43 @@
+<h1> Create A New Awesome Exciting Recipe! </h1>
+
+<div class="container">
+	<div class="wbdv-form-group row">
+		<label class="col-sm-2 col-form-label">Recipe Title</label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="recipe.title" class="form-control">
+		</div>
+	</div>
+	<span>
+		<div class="wbdv-form-group row">
+			<label class="col-sm-2 col-form-label">Chef: </label>
+			<div class="col-sm-10">
+				<input [(ngModel)]="user.username" class="form-control" readonly="true">
+			</div>
+		</div>
+	</span>
+	<span>
+		<div class="wbdv-form-group row">
+			<label class="col-sm-2 col-form-label">Description: </label>
+			<div class="col-sm-10">
+				<textarea [(ngModel)]="recipe.description" class="form-control" placeholder="Description of Recipe">
+				</textarea>
+			</div>
+		</div>
+	</span>
+	<div class="wbdv-form-group row">
+		<label for="lastName" class="col-sm-2 col-form-label">Ingredients: </label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="ingredients" class="form-control" placeholder="Ingredients">
+		</div>
+	</div>
+	<span>
+		<div class="wbdv-form-group row">
+			<label class="col-sm-2 col-form-label">Youtube API</label>
+			<div class="col-sm-10">
+				<input [(ngModel)]="youtube.API" class="form-control" placeholder="Curry Chicken">
+			</div>
+		</div>
+	</span>
+	<button (click)="createRecipe()" type="button" class="btn btn-primary btn-block">Create</button>
+
+</div>

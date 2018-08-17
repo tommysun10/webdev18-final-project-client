@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { CuisineServiceClient } from './services/cuisine.service.client';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RecipeServiceClient } from './services/recipe.service.client';
+import { RecipeMakerComponent } from './recipe-maker/recipe-maker.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RecipeServiceClient } from './services/recipe.service.client';
     ProfileComponent,
     RegisterComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    RecipeMakerComponent
   ],
   imports: [
     BrowserModule,
