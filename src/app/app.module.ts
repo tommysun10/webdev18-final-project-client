@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { Constants } from './common/constants';
 import { HomeComponent } from './home/home.component';
 import { CuisineServiceClient } from './services/cuisine.service.client';
+import { RecipeServiceClient } from './services/recipe.service.client';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CuisineServiceClient } from './services/cuisine.service.client';
     HttpModule,
     routing
   ],
-  providers: [Constants, UserServiceClient, CuisineServiceClient],
+  providers: [Constants, UserServiceClient, CuisineServiceClient, RecipeServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

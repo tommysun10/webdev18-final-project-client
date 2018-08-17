@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router"
 import { UserServiceClient } from '../services/user.service.client';
 import { CuisineServiceClient } from '../services/cuisine.service.client';
+import { RecipeServiceClient } from '../services/recipe.service.client';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,11 @@ export class HomeComponent implements OnInit {
   selectedCuisine = {};
   newCuisine = {}; 
   recipes = {}; 
+  newRecipe = {title: String};
   loggedIn = false; 
 
-  constructor(private router: Router,  private userService: UserServiceClient, private cuisineService: CuisineServiceClient) { }
+
+  constructor(private router: Router,  private userService: UserServiceClient, private recipeService: RecipeServiceClient, private cuisineService: CuisineServiceClient) { }
 
   createCuisine() {
     this.cuisineService.createCuisine(this.newCuisine).then(res => {
@@ -26,6 +29,13 @@ export class HomeComponent implements OnInit {
 
   selectCuisine(cuisine) {
     this.selectedCuisine = cuisine; 
+    this.recipeService.getRecipesForCuisine(cuisine.id).then(recipes => this.recipes = recipes);
+  }
+
+  createRecipe(cuisine) {
+    this.recipeService.createRecipe(cuisine.id, this.newRecipe).then(res => {
+      this.recipeService.getRecipesForCuisine(cuisine.id).then(recipes => this.recipes = recipes);
+    })
   }
 
   ngOnInit() {

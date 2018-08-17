@@ -16,5 +16,5 @@ export class Constants {
 
   // Cuisine Services
   CUISINE_URL = this.BASE_API_URL + "/cuisine";
-  RECIPE_URL = this.BASE_API_URL + "/recipes";
+  RECIPE_URL = this.BASE_API_URL + "/recipe";
 }
