@@ -1,11 +1,15 @@
 <h1 class="header">Login</h1>
 <input [(ngModel)]="username"
        class="form-control"
-       placeholder="username"/>
+       placeholder="Username"/>
 <input [(ngModel)]="password"
        class="form-control"
-       placeholder="password"/>
+       placeholder="Password"
+       type = "password"/>
 <button (click)="login(username, password)"
         class="btn btn-primary btn-block">
   Login
 </button>
+<a class="btn btn-success btn-block"routerLink="/register" >
+	Register
+</a>
