@@ -30,15 +30,6 @@ export class ProfileComponent implements OnInit {
     window.location.reload();
   }
 
-  goToAdminPage(role) {
-    if (role == 'admin') {
-      this.router.navigate(['admin']);
-    }
-    else {
-      alert("You are not an admin. Please log in with admin credentials");
-    }
-  }
-
   ngOnInit() {
     this.userService.currentUser()
       .then(user =>

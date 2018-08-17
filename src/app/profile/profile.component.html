@@ -44,6 +44,9 @@
   </div>
   <button (click)="updateUser()" type="button" class="btn btn-primary btn-block">Update</button>
   <button (click)="logout()" type="button" class="btn btn-primary btn-block">Logout</button>
-  <button (click)="goToAdminPage(user.role)" type="button" class="btn btn-primary btn-block">Admin</button>
+
+  <a *ngIf="user.role === 'ADMIN'" class="btn btn-primary btn-block" routerLink="/admin" >
+    Admin Page
+  </a>
 
 </div>
