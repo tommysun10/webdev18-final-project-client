@@ -2,7 +2,7 @@
   <div class="col-12">
     <h2>Users</h2>
     <table class="table table-hover">
-    <thead>
+      <thead>
         <tr>
           <th scope="col">Username</th>
           <th scope="col">Password</th>
@@ -22,30 +22,29 @@
           <th> <input [(ngModel)]="newUser.phone"  class="form-control" placeholder="xxx-xxx-xxxx"></th>
           <th> <input [(ngModel)]="newUser.email"  class="form-control" placeholder="jsmith@gmail.com"></th>
           <th>
-            <select id="roleFld" [(ngModel)]="newUser.role">
+            <select id="roleFld" class="form-control" [(ngModel)]="newUser.role">
               <option value="ADMIN">Admin</option>
               <option value="GENERAL">General</option>
               <option value="PRO">Professional</option>
             </select>
           </th>
+          <th> <button (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button></th>
           <th> <button (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button> </th>
-          <th> <button (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button>
-          </th>
         </tr>
       </thead>
       <tbody *ngFor="let user of users">
-          <tr>
-              <td>{{user.username}}</td>
-              <td>****</td>
-              <td>{{user.firstName}}</td>
-              <td>{{user.lastName}}</td>
-              <td>{{user.phone}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.role}}</td>
-              <td> <button (click)="deleteUser(user)" type="button" class="btn btn-primary btn-block">Remove</button> </td>
-              <td> <button (click)="updateUser(user)" type="button" class="btn btn-primary btn-block">Update</button> </td>
-            </tr>
-    </tbody>
+        <tr>
+          <td>{{user.username}}</td>
+          <td>****</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td> <button (click)="updateUser(user)" type="button" class="btn btn-primary btn-block">Update</button> </td>
+          <td> <button (click)="deleteUser(user)" type="button" class="btn btn-primary btn-block">Remove</button> </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
