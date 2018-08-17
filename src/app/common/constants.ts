@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class Constants {
-  BASE_API_URL = 'http://localhost:8080/api';
-  // BASE_API_URL = 'https://webdev-final-proj-server.herokuapp.com/api';
+  // BASE_API_URL = 'http://localhost:8080/api';
+  BASE_API_URL = 'https://webdev-final-proj-server.herokuapp.com/api';
 
   // User Based things
   PROFILE_URL = this.BASE_API_URL + "/profile";
