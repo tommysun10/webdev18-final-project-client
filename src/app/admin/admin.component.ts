@@ -10,7 +10,8 @@ import { UserServiceClient } from '../services/user.service.client';
 export class AdminComponent implements OnInit {
 
   users = [];
-  newUser = {};
+  newUser = {
+  };
 
   constructor(private router: Router, private userService: UserServiceClient) { }
 
@@ -20,6 +21,7 @@ export class AdminComponent implements OnInit {
 
   saveUser() {
     this.userService.updateUser(this.newUser)
+    	.then( () => this.emptyFields());
   }
 
   createUser() {
@@ -27,7 +29,12 @@ export class AdminComponent implements OnInit {
       this.userService
         .findAllUsers()
         .then(users => this.users = users)
+        .then ( () => this.emptyFields());
     })
+  }
+
+  emptyFields() {
+  	this.newUser = {};
   }
 
   deleteUser(user) {
@@ -35,6 +42,7 @@ export class AdminComponent implements OnInit {
     this.userService
       .findAllUsers()
       .then(users => this.users = users)
+      .then(() => window.location.reload());
   }
 
   ngOnInit() {
