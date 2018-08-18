@@ -35,10 +35,24 @@
 		<div class="wbdv-form-group row">
 			<label class="col-sm-2 col-form-label">Youtube API</label>
 			<div class="col-sm-10">
-				<input [(ngModel)]="youtube.API" class="form-control" placeholder="Curry Chicken">
+				<input [(ngModel)]="youtube.search" class="form-control" placeholder="Curry Chicken">
 			</div>
 		</div>
+		<button (click) = "searchYoutube(youtube.search)" type="button" class="btn btn-primary btn-block"> Search Youtube! </button>
 	</span>
-	<button (click)="createRecipe()" type="button" class="btn btn-primary btn-block">Create</button>
+
+	<ul class="list-group">
+		<li (click) = "selectVideo(video)" 
+		*ngFor="let video of videos" 
+		class = "list-group-item"
+		[ngClass]="{'active': video.id.videoId == selectedVideo.id.videoId}">
+			{{video.snippet.title}}
+			<img src="{{video.snippet.thumbnails.default.url}}">
+	</li>
+</ul>
+
+
+
+<button (click)="createRecipe()" type="button" class="btn btn-primary btn-block">Create</button>
 
 </div>

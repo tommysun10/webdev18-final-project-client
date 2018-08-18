@@ -16,25 +16,32 @@ import { CuisineServiceClient } from './services/cuisine.service.client';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RecipeServiceClient } from './services/recipe.service.client';
 import { RecipeMakerComponent } from './recipe-maker/recipe-maker.component';
+import { YoutubeServiceClient } from './services/youtube.service.client';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AdminComponent,
-    LoginComponent,
-    ProfileComponent,
-    RegisterComponent,
-    HomeComponent,
-    NavbarComponent,
-    RecipeMakerComponent
+  AppComponent,
+  AdminComponent,
+  LoginComponent,
+  ProfileComponent,
+  RegisterComponent,
+  HomeComponent,
+  NavbarComponent,
+  RecipeMakerComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing
+  BrowserModule,
+  FormsModule,
+  HttpModule,
+  routing
   ],
-  providers: [Constants, UserServiceClient, CuisineServiceClient, RecipeServiceClient],
+  providers: [
+  Constants, 
+  UserServiceClient, 
+  CuisineServiceClient, 
+  RecipeServiceClient,
+  YoutubeServiceClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
