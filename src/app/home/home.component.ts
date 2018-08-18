@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
   recipes = {}; 
   newRecipe = {title: String};
   loggedIn = false; 
+  user = {
+    role: ""
+  }
+  create = true;
 
 
   constructor(private router: Router,  private userService: UserServiceClient, private recipeService: RecipeServiceClient, private cuisineService: CuisineServiceClient) { }
@@ -27,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.cuisineService.createCuisine(this.newCuisine).then(res => {
       this.cuisineService.getCuisines().then(res => this.cuisines = res)
     })
+    this.newCuisine = {};
   }
 
   selectCuisine(cuisine) {
@@ -38,12 +43,37 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['recipe-create', {cid: this.selectedCuisine.id}])
   }
 
-  selectRecipe(recipe) {
-    this.router.navigate(['recipe', {rid: recipe.id}]);
+  deleteCuisine(cuisine) {
+    this.cuisineService.deleteCuisine(cuisine.id)
+      .then(() => this.cuisineService.getCuisines()
+        .then(cuisines => this.cuisines = cuisines));
+  }
+
+  viewRecipe(recipe) {
+     this.router.navigate(['recipe', {rid: recipe.id}]);
+  }
+
+  editCuisine(cuisine) {
+  	this.create = false;
+  	this.newCuisine = cuisine;
+  }
+
+  updateCuisine() {
+  	this.cuisineService.updateCuisine(this.newCuisine)
+  		.then(() => this.cuisineService.getCuisines()
+  			.then(cuisines => this.cuisines = cuisines));
+  	this.create = true;
+  	this.newCuisine = {};
+  }
+
+  editRecipe(recipe) {
+  	this.router.navigate(['recipe-editor',{rid: recipe.id}]);
   }
 
   ngOnInit() {
     this.cuisineService.getCuisines().then(res => this.cuisines = res)
+    .then(() => this.userService.currentUser()
+      .then(user => this.user = user));
   }
 
 }

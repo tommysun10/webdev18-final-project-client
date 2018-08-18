@@ -18,6 +18,7 @@ import { RecipeServiceClient } from './services/recipe.service.client';
 import { RecipeMakerComponent } from './recipe-maker/recipe-maker.component';
 import { YoutubeServiceClient } from './services/youtube.service.client';
 import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +30,8 @@ import { RecipeComponent } from './recipe/recipe.component';
 	HomeComponent,
 	NavbarComponent,
 	RecipeMakerComponent,
-	RecipeComponent
+	RecipeComponent,
+	RecipeEditorComponent
 
 	],
 	imports: [

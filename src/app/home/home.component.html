@@ -1,35 +1,64 @@
-<div class="row">
-  <div class="col-4">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <h1>Cuisines</h1>
-        </li>
-        <li> 
-            <th> <input [(ngModel)]="newCuisine.title" placeholder="title"></th>
-            <th> <button (click)="createCuisine()" type="button" class="btn btn-primary btn-block">Create</button>  
-        </li>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <h1> Cuisines </h1>
+      <ul class="list-group">
+        <div class = "input-group">
+          <input class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
+          <span class="input-group-btn">
+            <button *ngIf="create" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
+            <button *ngIf="!create" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
+          </span>
+        </div>
         <li (click)="selectCuisine(cuisine)" [ngClass]="{'active': cuisine.id == selectedCuisine.id}" *ngFor="let cuisine of cuisines"
         class="list-group-item">
         {{cuisine.title}}
-        <button class="btn" (click)="viewCuisine(cuisine)"> <i class="fa fa-eye"></i></button>
-      </li>
-    </ul>
+
+        <button *ngIf="user.role == 'PRO'" 
+        class="btn float-right" 
+        (click)="deleteCuisine(cuisine)"> 
+        <i class="fa fa-times"></i>
+      </button>
+
+      <button *ngIf="user.role == 'PRO'"
+      class="btn float-right my-edit-btn"
+      (click)="editCuisine(cuisine)">
+      <i class="fa fa-edit">
+      </i>
+    </button>
+
+    
+  </li>
+</ul>
+</div>
+
+<div class="col-9">
+  <div class= "input-group">
+    <h1>Recipes</h1>
+    <span class="input-group-btn float-right">
+      <button  *ngIf="user.role == 'PRO'" (click)="createRecipe()" type="button" class ="my-btn"><i class="fa fa-plus"> </i></button>
+    </span>
   </div>
-  <div class="col-8">
-      <h1>Recipes</h1>
-      <li> 
-          <th> <input [(ngModel)]="newRecipe.title" placeholder="title"></th>
-          <th> <button (click)="createRecipe()" type="button" class="btn btn-primary btn-block">Create</button>  
-      </li>
-      <li *ngFor="let recipe of recipes"> 
-      <div className="card" (click)="selectRecipe(recipe)">
-          <img className="card-img-top"
-               src="https://picsum.photos/300/200"/>
-          <div className="card-body">
-           <h5 className="card-title">recipe.title</h5>
-           <p className="card-text">Card text.</p>
-          </div>
+
+  <div  class = "container" *ngFor="let recipe of recipes">
+    <div class="col-auto"> 
+      <div class="card">
+        <img className="card-img-top"
+        src="{{recipe.imageUrl}}"/>
+        <div className="card-body">
+         <h5 className="card-title">{{recipe.title}}</h5>
+         <p className="card-text">{{recipe.description}}</p>
+         <div class = "float-right">
+           <button (click)="viewRecipe(recipe)" class="btn btn-secondary">
+            View
+          </button>
+          <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
+
         </div>
-          </li>
       </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 </div>
