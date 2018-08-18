@@ -58,7 +58,7 @@ export class RecipeMakerComponent implements OnInit {
 
   createRecipe() {
   	this.recipe.ingredients = this.ingredients.split("\n");
-    this.recipe.youtubeUrl = this.selectedVideo.id.videoId;
+    this.recipe.youtubeUrl = 'https://www.youtube.com/watch?v=' + this.selectedVideo.id.videoId;
     this.recipe.imageUrl = this.selectedVideo.snippet.thumbnails.default.url;
 
 console.log(this.recipe);

@@ -41,4 +41,12 @@ export class RecipeServiceClient {
                 'Content-type': 'application/json'
             },
         }).then(resp => resp.json());
+
+    getRecipeLikes = (recipeId) => 
+        fetch(this.constants.RECIPE_URL + '/' + recipeId + '/like', {
+            method: 'get',
+            headers: {
+                'Content-type': 'application/json'
+            },
+        }).then(resp => resp.json());
 }
