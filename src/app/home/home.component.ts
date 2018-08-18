@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   user = {
     role: ""
   }
+  create = true;
 
 
   constructor(private router: Router,  private userService: UserServiceClient, private recipeService: RecipeServiceClient, private cuisineService: CuisineServiceClient) { }
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.cuisineService.createCuisine(this.newCuisine).then(res => {
       this.cuisineService.getCuisines().then(res => this.cuisines = res)
     })
+    this.newCuisine = {};
   }
 
   selectCuisine(cuisine) {
@@ -42,11 +44,26 @@ export class HomeComponent implements OnInit {
   }
 
   deleteCuisine(cuisine) {
-    alert("hello");
+    this.cuisineService.deleteCuisine(cuisine.id)
+      .then(() => this.cuisineService.getCuisines()
+        .then(cuisines => this.cuisines = cuisines));
   }
 
   viewRecipe(recipe) {
      this.router.navigate(['recipe', {rid: recipe.id}]);
+  }
+
+  editCuisine(cuisine) {
+  	this.create = false;
+  	this.newCuisine = cuisine;
+  }
+
+  updateCuisine() {
+  	this.cuisineService.updateCuisine(this.newCuisine)
+  		.then(() => this.cuisineService.getCuisines()
+  			.then(cuisines => this.cuisines = cuisines));
+  	this.create = true;
+  	this.newCuisine = {};
   }
 
   ngOnInit() {

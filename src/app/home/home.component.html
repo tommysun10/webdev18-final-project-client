@@ -6,19 +6,30 @@
         <div class = "input-group">
           <input class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
           <span class="input-group-btn">
-            <button (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
+            <button *ngIf="create" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
+            <button *ngIf="!create" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
           </span>
         </div>
         <li (click)="selectCuisine(cuisine)" [ngClass]="{'active': cuisine.id == selectedCuisine.id}" *ngFor="let cuisine of cuisines"
         class="list-group-item">
         {{cuisine.title}}
+
         <button *ngIf="user.role == 'PRO'" 
         class="btn float-right" 
         (click)="deleteCuisine(cuisine)"> 
         <i class="fa fa-times"></i>
       </button>
-    </li>
-  </ul>
+
+      <button *ngIf="user.role == 'PRO'"
+      class="btn float-right my-edit-btn"
+      (click)="editCuisine(cuisine)">
+      <i class="fa fa-edit">
+      </i>
+    </button>
+
+    
+  </li>
+</ul>
 </div>
 
 <div class="col-9">
@@ -30,22 +41,22 @@
   </div>
 
   <div  class = "container" *ngFor="let recipe of recipes">
-      <div class="col-auto"> 
-        <div class="card">
-          <img className="card-img-top"
-          src="{{recipe.imageUrl}}"/>
-          <div className="card-body">
-           <h5 className="card-title">{{recipe.title}}</h5>
-           <p className="card-text">{{recipe.description}}</p>
-           <div class = "float-right">
-             <button (click)="viewRecipe(recipe)" class="btn btn-secondary">
-              View
-            </button>
-            <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
+    <div class="col-auto"> 
+      <div class="card">
+        <img className="card-img-top"
+        src="{{recipe.imageUrl}}"/>
+        <div className="card-body">
+         <h5 className="card-title">{{recipe.title}}</h5>
+         <p className="card-text">{{recipe.description}}</p>
+         <div class = "float-right">
+           <button (click)="viewRecipe(recipe)" class="btn btn-secondary">
+            View
+          </button>
+          <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
 
-          </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
 </div>
