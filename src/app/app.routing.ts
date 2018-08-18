@@ -13,8 +13,8 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'home', component: HomeComponent},
+  { path: 'recipe', component: RecipeComponent},
   { path: 'recipe-create', component: RecipeMakerComponent},
-  { path: 'recipe/:recipeId', component: RecipeComponent},
   { path: '**', component: HomeComponent}
 
 

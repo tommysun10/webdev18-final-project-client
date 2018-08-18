@@ -3,14 +3,15 @@
   </div>
 
   <div class="col-8 text-center">
-    <h2>{{title}}</h2>
-    <h4>Inspired by {{cuisine}} cuisine</h4>
+    <h2>{{recipe.title}}</h2>
+    <h4>Inspired by cuisine</h4>
     <button class="btn btn-success align-content-center"
-            (click)="incrementLikeCount()">Like</button>
+            (click)="likeRecipe(recipe)">Like</button>
     <i class="glyphicon glyphicon-heart"></i>
-    <p> Likes:
+    <p> Likes: {{recipe.likes.length}}
       <!--<a href="#"><span class="glyphicon glyphicon-empty-heart"></span></a>-->
     </p>
+
     <iframe width="560" height="315"
             src="{{videoSrc}}"
             frameBorder="0" allow="autoplay; encrypted-media"
@@ -19,20 +20,20 @@
     <div class="ingredient-list">
       <h6>Ingredient List:</h6>
       <ul class="list-group">
-        <li class="text-left" *ngFor="let ingredient of ingredients">
+        <li class="text-left" *ngFor="let ingredient of recipe.ingredients">
           {{ingredient}}
         </li>
       </ul>
     </div>
     <div class="description">
-      <p>{{description}}</p>
+      <p>{{recipe.description}}</p>
     </div>
 
   </div>
 
   <div class="col-2 text-center">
     <h4>Chef Information:</h4>
-    <p class="text-center">{{user.username}}</p>
-    <a routerLink="/profile">See {{user.username}}'s profile</a>
+    <p class="text-center">{{recipe.chef.username}}</p>
+    <a routerLink="/profile">See {{recipe.chef.username}}'s profile</a>
   </div>
 </div>

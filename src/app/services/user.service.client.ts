@@ -86,4 +86,14 @@ export class UserServiceClient {
 	}).then(resp => resp.json());
 	}
 
+	likeRecipe = (recipeId) => {
+		return fetch(this.constants.USER_URL + '/recipe/' + recipeId + '/like', {
+			method: 'post',
+			credentials: 'include',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		})
+	}
+
 }

@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
   }
 
   viewRecipe(recipe) {
-    console.log("works");
      this.router.navigate(['recipe', {rid: recipe.id}]);
   }
 
