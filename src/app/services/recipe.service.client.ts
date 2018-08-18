@@ -33,4 +33,12 @@ export class RecipeServiceClient {
                 'Content-type': 'application/json'
             },
         }).then(resp => resp.json());
+
+    getRecipe = (recipeId) => 
+        fetch(this.constants.RECIPE_URL + '/' + recipeId, {
+            method: 'get',
+            headers: {
+                'Content-type': 'application/json'
+            },
+        }).then(resp => resp.json());
 }

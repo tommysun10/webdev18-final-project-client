@@ -22,7 +22,7 @@
           <th> <button (click)="createRecipe()" type="button" class="btn btn-primary btn-block">Create</button>  
       </li>
       <li *ngFor="let recipe of recipes"> 
-      <div className="card">
+      <div className="card" (click)="selectRecipe(recipe)">
           <img className="card-img-top"
                src="https://picsum.photos/300/200"/>
           <div className="card-body">
