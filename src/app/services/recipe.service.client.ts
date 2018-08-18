@@ -1,5 +1,5 @@
 
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Constants } from '../common/constants';
 
 @Injectable()
@@ -26,7 +26,7 @@ export class RecipeServiceClient {
         }).then(resp => resp.json());
     }
 
-    getRecipesForCuisine = (cuisineId) => 
+    getRecipesForCuisine = (cuisineId) =>
          fetch(this.constants.CUISINE_URL + '/' + cuisineId + '/recipes', {
             method: 'get',
             headers: {
