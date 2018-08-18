@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'recipe/:recipeId', component: RecipeComponent},
+  { path: 'recipe', component: RecipeComponent},
   { path: '**', component: HomeComponent}
 
 

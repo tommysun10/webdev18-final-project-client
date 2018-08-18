@@ -38,6 +38,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  selectRecipe(recipe) {
+    this.router.navigate(['recipe', {rid: recipe.id}]);
+  }
+
   ngOnInit() {
     this.cuisineService.getCuisines().then(res => this.cuisines = res)
   }
