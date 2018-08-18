@@ -18,9 +18,8 @@ export class RecipeMakerComponent implements OnInit {
 		description: '',
 		user: {},
 		ingredients: [],
-    videoTitle: '',
-    imageURL: '',
-    youtubeVideo: '',
+    imageUrl: '',
+    youtubeUrl: '',
 
   };
   user = {username:''};
@@ -59,9 +58,8 @@ export class RecipeMakerComponent implements OnInit {
 
   createRecipe() {
   	this.recipe.ingredients = this.ingredients.split("\n");
-    this.recipe.youtubeVideo = this.selectedVideo.id.videoId;
-    this.recipe.imageURL = this.selectedVideo.snippet.thumbnails.default.url;
-    this.recipe.videoTitle = this.selectedVideo.snippet.title;
+    this.recipe.youtubeUrl = this.selectedVideo.id.videoId;
+    this.recipe.imageUrl = this.selectedVideo.snippet.thumbnails.default.url;
 
 console.log(this.recipe);
 

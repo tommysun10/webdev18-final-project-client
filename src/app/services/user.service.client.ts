@@ -88,7 +88,7 @@ export class UserServiceClient {
 
 	likeRecipe = (recipeId) => {
 		return fetch(this.constants.USER_URL + '/recipe/' + recipeId + '/like', {
-			method: 'put',
+			method: 'post',
 			credentials: 'include',
 			headers: {
 				'Content-type': 'application/json'
