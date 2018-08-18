@@ -41,4 +41,14 @@ export class RecipeServiceClient {
                 'Content-type': 'application/json'
             },
         }).then(resp => resp.json());
+
+     updateRecipe = (newRecipe) => {
+         return fetch(this.constants.RECIPE_URL + '/' + newRecipe.id, {
+             method: 'put',
+             headers: {
+                 'Content-type': 'application/json'
+             },
+             body: JSON.stringify(newRecipe)
+         }).then(resp => resp.json());
+     }
 }

@@ -1,0 +1,78 @@
+<h1> Edit Recipe </h1>
+
+<div class="container">
+	<div class="wbdv-form-group row">
+		<label class="col-sm-2 col-form-label">Recipe Title</label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="recipe.title" class="form-control" placeholder="Super Awesome Recipe">
+		</div>
+	</div>
+<!-- 	<span>
+		<div class="wbdv-form-group row">
+			<label class="col-sm-2 col-form-label">Chef: </label>
+			<div class="col-sm-10">
+				<input [(ngModel)]="recipe.chef.username" class="form-control" readonly="true">
+			</div>
+		</div>
+	</span> -->
+	<span>
+		<div class="wbdv-form-group row">
+			<label class="col-sm-2 col-form-label">Description: </label>
+			<div class="col-sm-10">
+				<textarea [(ngModel)]="recipe.description" class="form-control" placeholder="Description of Recipe">
+				</textarea>
+			</div>
+		</div>
+	</span>
+
+	<div class="wbdv-form-group row">
+		<label for="lastName" class="col-sm-2 col-form-label">Ingredients: </label>
+		<div class="col-sm-10">
+			<textarea [(ngModel)]="ingredients" class="form-control" placeholder="Ingredients">
+			</textarea>
+		</div>
+	</div>
+
+	<div class="wbdv-form-group row">
+		<label for="lastName" class="col-sm-2 col-form-label">Image URL: </label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="recipe.imageUrl" class="form-control" placeholder="Image">
+		</div>
+	</div>
+
+	<div class="wbdv-form-group row">
+		<label for="lastName" class="col-sm-2 col-form-label">Youtube Video ID: </label>
+		<div class="col-sm-10">
+			<input [(ngModel)]="recipe.youtubeUrl" class="form-control" placeholder="Video Link">
+		</div>
+	</div>
+
+	<span>
+		<div class="wbdv-form-group row">
+			<label class="col-sm-2 col-form-label">Youtube Search</label>
+			<div class="col-sm-10">
+				<input [(ngModel)]="search" class="form-control" placeholder="Curry Chicken">
+			</div>
+		</div>
+		<br/>
+		<button (click) = "searchYoutube()" type="button" class="btn btn-primary btn-block"> Search Youtube! </button>
+		<br/>
+	</span>
+
+	<ul class="list-group">
+		<li (click) = "selectVideo(video)" 
+		*ngFor="let video of videos" 
+		class = "list-group-item"
+		[ngClass]="{'active': video.id.videoId == selectedVideo.id.videoId}">
+		{{video.snippet.title}}
+		<img src="{{video.snippet.thumbnails.default.url}}">
+	</li>
+</ul>
+
+<br/>
+
+<button (click)="updateRecipe()" type="button" class="btn btn-success btn-block">Update</button>
+
+<button (click)="deleteRecipe()" type="button" class="btn btn-danger btn-block">Delete</button>
+
+</div>

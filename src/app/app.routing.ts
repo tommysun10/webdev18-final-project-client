@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component'
 import { RecipeMakerComponent} from './recipe-maker/recipe-maker.component';
 import {RecipeComponent} from "./recipe/recipe.component";
+import {RecipeEditorComponent} from './recipe-editor/recipe-editor.component'
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'recipe', component: RecipeComponent},
   { path: 'recipe-create', component: RecipeMakerComponent},
+  { path: 'recipe-editor', component: RecipeEditorComponent}
   { path: '**', component: HomeComponent}
 
 

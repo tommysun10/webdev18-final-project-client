@@ -61,8 +61,6 @@ export class RecipeMakerComponent implements OnInit {
     this.recipe.youtubeUrl = this.selectedVideo.id.videoId;
     this.recipe.imageUrl = this.selectedVideo.snippet.thumbnails.default.url;
 
-console.log(this.recipe);
-
     this.recipeService.createRecipe(this.cuisineId, this.recipe)
     .then(() => this.router.navigate(['home']));
   }
