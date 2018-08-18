@@ -33,4 +33,14 @@ export class CuisineServiceClient {
                 'Content-type': 'application/json'
             },
         }).then(resp => resp.json());
+
+    updateCuisine = (newCuisine) => {
+        return fetch(this.constants.CUISINE_URL + '/' + newCuisine.id, {
+            method: 'put',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(newCuisine)
+        }).then(resp => resp.json());
+    }
 }
