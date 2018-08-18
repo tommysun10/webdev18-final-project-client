@@ -12,7 +12,9 @@ import { RecipeServiceClient } from '../services/recipe.service.client';
 export class HomeComponent implements OnInit {
 
   cuisines = [];
-  selectedCuisine = {};
+  selectedCuisine = {
+    id:''
+  };
   newCuisine = {}; 
   recipes = {}; 
   newRecipe = {title: String};
@@ -32,10 +34,8 @@ export class HomeComponent implements OnInit {
     this.recipeService.getRecipesForCuisine(cuisine.id).then(recipes => this.recipes = recipes);
   }
 
-  createRecipe(cuisine) {
-    this.recipeService.createRecipe(cuisine.id, this.newRecipe).then(res => {
-      this.recipeService.getRecipesForCuisine(cuisine.id).then(recipes => this.recipes = recipes);
-    })
+  createRecipe() {
+    this.router.navigate(['recipe-create', {cid: this.selectedCuisine.id}])
   }
 
   ngOnInit() {

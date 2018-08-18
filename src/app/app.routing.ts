@@ -3,7 +3,8 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {ProfileComponent} from "./profile/profile.component";
 import { AdminComponent } from './admin/admin.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home/home.component'
+import { RecipeMakerComponent} from './recipe-maker/recipe-maker.component';
 import {RecipeComponent} from "./recipe/recipe.component";
 
 const appRoutes: Routes = [
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'home', component: HomeComponent},
+  { path: 'recipe-create', component: RecipeMakerComponent},
   { path: 'recipe/:recipeId', component: RecipeComponent},
   { path: '**', component: HomeComponent}
 
