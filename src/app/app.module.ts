@@ -28,7 +28,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 	RegisterComponent,
 	HomeComponent,
 	NavbarComponent,
-	NavbarComponent,
+	RecipeMakerComponent,
 	RecipeComponent
 
 	],
