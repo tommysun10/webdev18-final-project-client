@@ -57,6 +57,11 @@ export class RecipeEditorComponent implements OnInit {
 
 	}
 
+	deleteRecipe() {
+		this.recipeService.deleteRecipe(this.aRoute.snapshot.paramMap.get('rid'))
+		.then(() => this.router.navigate(['home']));
+	}
+
 	searchYoutube() {
 		this.youtubeService.getYoutubeObject(this.search)
 		.then(response => this.youtube = response)
