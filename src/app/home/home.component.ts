@@ -66,6 +66,10 @@ export class HomeComponent implements OnInit {
   	this.newCuisine = {};
   }
 
+  editRecipe(recipe) {
+  	this.router.navigate(['recipe-editor',{rid: recipe.id}]);
+  }
+
   ngOnInit() {
     this.cuisineService.getCuisines().then(res => this.cuisines = res)
     .then(() => this.userService.currentUser()
