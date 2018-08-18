@@ -11,25 +11,44 @@ export class AdminComponent implements OnInit {
 
   users = [];
   newUser = {
+    username: "",
+    password: "",
   };
+  curUser = {
+    role: "",
+  }
+  editMode = false;
 
   constructor(private router: Router, private userService: UserServiceClient) { }
 
   updateUser(user) {
+    this.editMode = true;
     this.newUser = user;
   }
 
   saveUser() {
+    if (this.newUser.username == "") {
+      alert("Username cannot be blank");
+      window.location.reload();
+      return;
+    }
+
+    if (this.newUser.password == "") {
+      alert("Password cannot be blank");
+      window.location.reload();
+      return;
+    }
+    this.editMode = false;
     this.userService.updateUser(this.newUser)
-    	.then( () => this.emptyFields());
+    .then( () => this.emptyFields());
   }
 
   createUser() {
     this.userService.createUser(this.newUser).then(() => {
       this.userService
-        .findAllUsers()
-        .then(users => this.users = users)
-        .then ( () => this.emptyFields());
+      .findAllUsers()
+      .then(users => this.users = users)
+      .then ( () => this.emptyFields());
     })
   }
 
@@ -40,15 +59,17 @@ export class AdminComponent implements OnInit {
   deleteUser(user) {
     this.userService.deleteUser(user.id);
     this.userService
-      .findAllUsers()
-      .then(users => this.users = users)
-      .then(() => window.location.reload());
+    .findAllUsers()
+    .then(users => this.users = users)
+    .then(() => window.location.reload());
   }
 
   ngOnInit() {
     this.userService
-      .findAllUsers()
-      .then(users => this.users = users)
+    .findAllUsers()
+    .then(users => this.users = users)
+    .then (()=> this.userService.currentUser() 
+      .then ((cur) => this.curUser = cur))
   }
 
 }

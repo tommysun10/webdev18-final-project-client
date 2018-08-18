@@ -15,7 +15,9 @@ export class HomeComponent implements OnInit {
   selectedCuisine = {
     id:''
   };
-  newCuisine = {}; 
+  newCuisine = {
+    title:''
+  }; 
   recipes = {}; 
   newRecipe = {title: String};
   loggedIn = false; 
@@ -28,10 +30,14 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,  private userService: UserServiceClient, private recipeService: RecipeServiceClient, private cuisineService: CuisineServiceClient) { }
 
   createCuisine() {
+    if (this.newCuisine.title == '') {
+      alert("Please Enter Cuisine Name");
+      return;
+    }
     this.cuisineService.createCuisine(this.newCuisine).then(res => {
       this.cuisineService.getCuisines().then(res => this.cuisines = res)
     })
-    this.newCuisine = {};
+    this.newCuisine = {title:''};
   }
 
   selectCuisine(cuisine) {
@@ -46,7 +52,8 @@ export class HomeComponent implements OnInit {
   deleteCuisine(cuisine) {
     this.cuisineService.deleteCuisine(cuisine.id)
       .then(() => this.cuisineService.getCuisines()
-        .then(cuisines => this.cuisines = cuisines));
+        .then(cuisines => this.cuisines = cuisines)
+        .then( () => window.location.reload()));
   }
 
   viewRecipe(recipe) {
