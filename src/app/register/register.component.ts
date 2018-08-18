@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
       const newUser = {
         username: username,
         password: password1,
+        role: 'GENERAL'
       };
       this.userService.register(newUser)
       .then(u => {

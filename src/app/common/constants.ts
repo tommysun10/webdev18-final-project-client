@@ -16,6 +16,11 @@ export class Constants {
   USERS_URL = this.BASE_API_URL + '/users';
 
   // Cuisine Services
-  CUISINE_URL = this.BASE_API_URL + '/cuisine';
-  RECIPE_URL = this.BASE_API_URL + '/recipe';
+
+  CUISINE_URL = this.BASE_API_URL + "/cuisine";
+  RECIPE_URL = this.BASE_API_URL + "/recipe";
+
+  // Youtube API 
+  YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=";
+  YOUTUBE_URL_TWO= "&type=video&key=AIzaSyBy8LJmSegON_gEweoYnun1JwZbzaojYhs";
 }
