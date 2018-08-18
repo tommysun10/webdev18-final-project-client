@@ -29,25 +29,25 @@
     </span>
   </div>
 
-  <ul class = "list-unstyled">
-    <li *ngFor="let recipe of recipes"> 
-      <div className="card">
-        <img className="card-img-top"
-        src="{{recipe.imageURL}}"/>
-        <div className="card-body">
-         <h5 className="card-title">{{recipe.title}}</h5>
-         <p className="card-text">{{recipe.description}}</p>
-         <div class = "float-right">
-           <button (click)="viewRecipe(recipe)" class="btn btn-secondary">
-            View
-          </button>
-          <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
+  <div  class = "container" *ngFor="let recipe of recipes">
+      <div class="col-auto"> 
+        <div class="card">
+          <img className="card-img-top"
+          src="{{recipe.imageUrl}}"/>
+          <div className="card-body">
+           <h5 className="card-title">{{recipe.title}}</h5>
+           <p className="card-text">{{recipe.description}}</p>
+           <div class = "float-right">
+             <button (click)="viewRecipe(recipe)" class="btn btn-secondary">
+              View
+            </button>
+            <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
 
+          </div>
         </div>
       </div>
-    </div>
-  </li>
-</ul>
+  </div>
+</div>
 </div>
 </div>
 </div>
