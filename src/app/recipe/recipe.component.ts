@@ -29,7 +29,8 @@ export class RecipeComponent implements OnInit {
 		.then( () => {
 			this.recipeService.getRecipeLikes(likedRecipe)
 			.then(likes => this.recipe.likes = likes); 
-		})
+		}).then(()=>
+		window.location.reload());
 	}
 
 	goToChef() {
