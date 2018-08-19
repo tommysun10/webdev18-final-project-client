@@ -47,7 +47,7 @@
         src="{{recipe.imageUrl}}"/>
         <div className="card-body">
          <h5 className="card-title">{{recipe.title}}</h5>
-         <p className="card-text">{{recipe.description}}</p>
+         <p className="card-text">{{recipe.description.substring(0,50)}} ...</p>
          <div class = "float-right">
           <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
       </div>
