@@ -3,6 +3,30 @@
   list-style-position: inside;
 }
 
+.like-btn{
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
 .ingredient-list {
-  border-style: groove;
+	margin-left: 165px;
+	width: 375px;
+}
+
+.ingredients {
+	margin-left: 25px;
+	margin-bottom: 2px;
+}
+
+.box {
+	width: 750px;
+}
+
+.chef-name {
+	color: blue;
+}
+
+.video-description{
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
