@@ -13,6 +13,11 @@ export class AdminComponent implements OnInit {
   newUser = {
     username: "",
     password: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    role: "",
   };
   curUser = {
     role: "",
@@ -53,9 +58,14 @@ export class AdminComponent implements OnInit {
   }
 
   emptyFields() {
-  	this.newUser = {
-      username:"",
-      password:"",
+    this.newUser = {
+      username: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      role: "",
     };
   }
 
