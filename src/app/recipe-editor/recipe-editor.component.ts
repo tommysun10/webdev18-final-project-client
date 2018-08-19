@@ -34,7 +34,8 @@ export class RecipeEditorComponent implements OnInit {
 	youtube: {
 		items:[]
 	}
-	videos:[]
+	videos = [];
+	chef = {}; 
 
 	constructor(private recipeService: RecipeServiceClient,
 		private router: Router,
@@ -74,7 +75,8 @@ export class RecipeEditorComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.recipeService.getRecipe(this.aRoute.snapshot.paramMap.get('rid'))
+		var recipeId = +this.aRoute.snapshot.paramMap.get('rid')
+		this.recipeService.getRecipe(recipeId)
 		.then(recipe => {
 			this.recipe = recipe;
 			for(let s of recipe.ingredients) {
@@ -84,6 +86,9 @@ export class RecipeEditorComponent implements OnInit {
 					this.ingredients += s;
 				}
 				this.ingredients += "\n";
+				this.recipeService.getChef(recipeId).then(chef => {
+					this.chef = chef; 
+				  })
 			}
 		});
 	}

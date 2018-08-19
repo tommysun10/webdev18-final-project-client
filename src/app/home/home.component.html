@@ -42,16 +42,13 @@
 
 <div class="grid-container">
   <div *ngFor="let recipe of recipes">
-      <div class="card">
+      <div class="card" (click)="viewRecipe(recipe)">
         <img className="card-img-top"
         src="{{recipe.imageUrl}}"/>
         <div className="card-body">
          <h5 className="card-title">{{recipe.title}}</h5>
          <p className="card-text">{{recipe.description}}</p>
          <div class = "float-right">
-           <button (click)="viewRecipe(recipe)" class="btn btn-secondary view-btn">
-            View
-          </button>
           <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
       </div>
     </div>

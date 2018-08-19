@@ -13,10 +13,10 @@ export class RecipeComponent implements OnInit {
 
   recipe = {}; 
   cuisine = 'Asian Fusion';
-  videoSrc = 'https://youtu.be/YmRyCtHK_UI';
-  user = {
-    username: 'dana',
-  }
+  videoSrc = '';
+  chef = {}; 
+
+  usersLiked = []; 
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeServiceClient, private userService: UserServiceClient) { }
 
@@ -27,10 +27,18 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // var recipeId = +this.route.snapshot.paramMap.get('rid');
-    this.recipeService.getRecipe(+this.route.snapshot.paramMap.get('rid')).then(recipe => {
+     var recipeId = +this.route.snapshot.paramMap.get('rid');
+    this.recipeService.getRecipe(recipeId).then(recipe => {
       this.recipe = recipe; 
-      console.log(recipe.likes);
+      this.videoSrc = recipe.youtubeUrl;
+      console.log(this.videoSrc);
+    })
+
+    this.recipeService.getRecipeLikes(recipeId).then(usersLiked => {
+      this.usersLiked = usersLiked; 
+      this.recipeService.getChef(recipeId).then(chef => {
+        this.chef = chef; 
+      })
     })
   }
 

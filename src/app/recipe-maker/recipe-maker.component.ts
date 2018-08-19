@@ -59,6 +59,7 @@ export class RecipeMakerComponent implements OnInit {
 
   createRecipe() {
   	this.recipe.ingredients = this.ingredients.split("\n");
+    this.recipe.youtubeUrl = 'https://www.youtube.com/watch?v=' + this.selectedVideo.id.videoId;
     if (this.recipe.title == '') {
       alert('Please Enter a Title');
       return;

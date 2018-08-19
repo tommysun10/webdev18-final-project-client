@@ -19,6 +19,7 @@ export class RecipeServiceClient {
     createRecipe = (cuisineId, newRecipe) => {
         return fetch(this.constants.CUISINE_URL + '/' + cuisineId + '/recipe', {
             method: 'post',
+            credentials: 'include',
             headers: {
                 'Content-type': 'application/json'
             },
@@ -36,6 +37,22 @@ export class RecipeServiceClient {
 
     getRecipe = (recipeId) => 
         fetch(this.constants.RECIPE_URL + '/' + recipeId, {
+            method: 'get',
+            headers: {
+                'Content-type': 'application/json'
+            },
+        }).then(resp => resp.json());
+
+    getRecipeLikes = (recipeId) => 
+        fetch(this.constants.RECIPE_URL + '/' + recipeId + '/like', {
+            method: 'get',
+            headers: {
+                'Content-type': 'application/json'
+            },
+        }).then(resp => resp.json());
+
+    getChef = (recipeId) => 
+        fetch(this.constants.RECIPE_URL + '/' + recipeId + '/chef', {
             method: 'get',
             headers: {
                 'Content-type': 'application/json'

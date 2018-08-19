@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'recipe', component: RecipeComponent},
   { path: 'recipe-create', component: RecipeMakerComponent},
-  { path: 'recipe-editor', component: RecipeEditorComponent}
+  { path: 'recipe-editor', component: RecipeEditorComponent},
   { path: '**', component: HomeComponent}
 
 
