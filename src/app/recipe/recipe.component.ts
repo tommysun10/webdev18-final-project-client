@@ -14,9 +14,7 @@ export class RecipeComponent implements OnInit {
   recipe = {}; 
   cuisine = 'Asian Fusion';
   videoSrc = '';
-  user = {
-    username: 'dana',
-  }
+  chef = {}; 
 
   usersLiked = []; 
 
@@ -36,7 +34,12 @@ export class RecipeComponent implements OnInit {
       console.log(this.videoSrc);
     })
 
-    this.recipeService.getRecipeLikes(recipeId).then(usersLiked => this.usersLiked = usersLiked)
+    this.recipeService.getRecipeLikes(recipeId).then(usersLiked => {
+      this.usersLiked = usersLiked; 
+      this.recipeService.getChef(recipeId).then(chef => {
+        this.chef = chef; 
+      })
+    })
   }
 
 }
