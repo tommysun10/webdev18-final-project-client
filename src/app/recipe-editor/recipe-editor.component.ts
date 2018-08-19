@@ -15,7 +15,7 @@ export class RecipeEditorComponent implements OnInit {
 		youtubeUrl: "",
 		imageUrl: ""
 	};
-	search: '';
+	search = '';
 	ingredients = "";
 	selectedVideo: {
 		id: {
@@ -32,7 +32,7 @@ export class RecipeEditorComponent implements OnInit {
 		}
 	}
 	youtube: {
-		items: ["a"]
+		items: [""]
 	}
 	videos = [];
 	chef = {};
