@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RecipeServiceClient} from '../services/recipe.service.client';
+import { RecipeServiceClient } from '../services/recipe.service.client';
 import { Router, ActivatedRoute } from "@angular/router";
-import {YoutubeServiceClient} from '../services/youtube.service.client';
+import { YoutubeServiceClient } from '../services/youtube.service.client';
 
 @Component({
 	selector: 'app-recipe-editor',
@@ -16,31 +16,31 @@ export class RecipeEditorComponent implements OnInit {
 		imageUrl: ""
 	};
 	search: '';
-	ingredients:'';
+	ingredients = "";
 	selectedVideo: {
 		id: {
-			videoId:"",
+			videoId: "",
 		},
 
 		snippet: {
-			title:"",
+			title: "",
 			thumbnails: {
-				default:{
-					url:""
+				default: {
+					url: ""
 				},
 			}
 		}
 	}
 	youtube: {
-		items:[]
+		items: []
 	}
 	videos = [];
-	chef = {}; 
+	chef = {};
 
 	constructor(private recipeService: RecipeServiceClient,
 		private router: Router,
 		private aRoute: ActivatedRoute,
-		private youtubeService: YoutubeServiceClient,) { }
+		private youtubeService: YoutubeServiceClient, ) { }
 
 	selectVideo(video) {
 		this.selectedVideo = video;
@@ -59,37 +59,38 @@ export class RecipeEditorComponent implements OnInit {
 		}
 
 		this.recipeService.updateRecipe(this.recipe)
-		.then(()=> this.router.navigate(['home']));
+			.then(() => this.router.navigate(['home']));
 
 	}
 
 	deleteRecipe() {
 		this.recipeService.deleteRecipe(this.aRoute.snapshot.paramMap.get('rid'))
-		.then(() => this.router.navigate(['home']));
+			.then(() => this.router.navigate(['home']));
 	}
 
 	searchYoutube() {
 		this.youtubeService.getYoutubeObject(this.search)
-		.then(response => this.youtube = response)
-		.then(() => this.videos = this.youtube.items)
+			.then(response => this.youtube = response)
+			.then(() => this.videos = this.youtube.items)
 	}
 
 	ngOnInit() {
+		var ingredientsArray = [];
 		var recipeId = +this.aRoute.snapshot.paramMap.get('rid')
 		this.recipeService.getRecipe(recipeId)
-		.then(recipe => {
-			this.recipe = recipe;
-			for(let s of recipe.ingredients) {
-				if (!this.ingredients) {
-					this.ingredients = s;
-				} else {
+			.then(recipe => {
+				this.recipe = recipe;
+				for (let s of recipe.ingredients) {
 					this.ingredients += s;
+					this.ingredients += "\n";
 				}
-				this.ingredients += "\n";
+				ingredientsArray = this.ingredients.split('undefined');
+				this.ingredients = ingredientsArray[0];
 				this.recipeService.getChef(recipeId).then(chef => {
-					this.chef = chef; 
-				  })
+					this.chef = chef;
+					
+				})
 			}
-		});
-	}
+		);
+}
 }
