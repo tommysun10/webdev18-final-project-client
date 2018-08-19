@@ -56,6 +56,7 @@
             <ul class="list-group">
               <li class="follow-list" *ngFor="let follow of following" (click)="goToProfile(follow.id)">
                 {{follow.username}}
+                <button *ngIf="isCurrentUser" (click)="unfollow(follow.id, $event)" type="button" class="btn btn-primary unfollow">Unfollow</button>
               </li>
             </ul>
           </div>

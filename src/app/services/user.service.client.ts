@@ -123,6 +123,15 @@ export class UserServiceClient {
 			},
 		}).then(resp => resp.json());
 
+	unfollow = (userId) =>
+		fetch(this.constants.USER_URL + '/unfollow/' + userId, {
+			method: 'put',
+			credentials: 'include',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
+
 	getFollowing = (userId) =>
 		fetch(this.constants.USER_URL + '/' + userId + '/following', {
 			method: 'get',
