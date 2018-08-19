@@ -26,7 +26,32 @@
 	color: blue;
 }
 
-.video-description{
-	margin-top: 5px;
-	margin-bottom: 5px;
+
+.description {
+	margin-left: 20%;
+	width: 100%;
+	display: block;
+}
+
+.img {
+	width: auto;
+	height: 90%;
+	margin-right: 60%;
+	margin-left: 10% ;
+	display: block;
+}
+
+.recipe-details {
+	padding: 25px;
+	border: 1px #ececec;
+	font-size: 90%;
+	font-style: normal;
+	display: block;
+}  
+
+.recipe-overview {
+	border: 1px #ececec;
+	font-size: 90%;
+	font-style: normal;
+	display: block;
 }

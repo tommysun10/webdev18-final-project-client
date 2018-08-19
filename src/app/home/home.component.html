@@ -38,24 +38,26 @@
     <span class="input-group-btn float-right">
       <button  *ngIf="user.role == 'PRO'" (click)="createRecipe()" type="button" class ="my-btn"><i class="fa fa-plus"> </i></button>
     </span>
-    <div class="filter"> <input [(ngModel)]="recipeTitle" placeholder="recipe title">
-      <button (click)="searchRecipe()" type="button" class="btn btn-primary">Search</button> </div>      
+    <div class="filter"> 
+      <input [(ngModel)]="recipeTitle" class="form-control" placeholder="Search Recipe">
+      <button (click)="searchRecipe()" type="button" class="btn btn-block">Search</button> 
+    </div>      
   </div>
 
-<div class="grid-container">
-  <div *ngFor="let recipe of recipes">
+  <div class="grid-container">
+    <div *ngFor="let recipe of recipes">
       <div class="card" (click)="viewRecipe(recipe)">
         <img className="card-img-top"
         src="{{recipe.imageUrl}}"/>
         <div className="card-body">
          <h5 className="card-title">{{recipe.title}}</h5>
-         <p className="card-text">{{recipe.description}}</p>
+         <p className="card-text">{{recipe.description.substring(0,50)}} ...</p>
          <div class = "float-right">
           <button *ngIf="user.role =='PRO'" (click)="editRecipe(recipe)" class="btn btn-secondary btn-edit">Edit</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </div>
 </div>

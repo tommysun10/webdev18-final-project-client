@@ -42,29 +42,33 @@ export class HomeComponent implements OnInit {
   }
 
   searchRecipe() {
-      this.recipeService.getRecipesForCuisine(this.selectedCuisine.id).then(recipes =>  {
-        this.recipes = recipes.filter(recipe => recipe.title.includes(this.recipeTitle));
-      })
+    this.recipeService.getRecipesForCuisine(this.selectedCuisine.id)
+      .then(recipes => this.recipes = recipes.filter(recipe => recipe.title.toLowerCase().includes(this.recipeTitle.toLowerCase())));
   }
 
   selectCuisine(cuisine) {
     this.selectedCuisine = cuisine; 
     this.recipeService.getRecipesForCuisine(cuisine.id).then(recipes => this.recipes = recipes);
+    this.recipeTitle = "";
   }
 
   createRecipe() {
-    this.router.navigate(['recipe-create', {cid: this.selectedCuisine.id}])
+    if (this.selectedCuisine.id === '') {
+      alert('Please Select a Cuisine')
+    } else {
+      this.router.navigate(['recipe-create', {cid: this.selectedCuisine.id}])
+    }
   }
 
   deleteCuisine(cuisine) {
     this.cuisineService.deleteCuisine(cuisine.id)
-      .then(() => this.cuisineService.getCuisines()
-        .then(cuisines => this.cuisines = cuisines)
-        .then( () => window.location.reload()));
+    .then(() => this.cuisineService.getCuisines()
+      .then(cuisines => this.cuisines = cuisines)
+      .then( () => window.location.reload()));
   }
 
   viewRecipe(recipe) {
-     this.router.navigate(['recipe', {rid: recipe.id}]);
+    this.router.navigate(['recipe', {rid: recipe.id}]);
   }
 
   editCuisine(cuisine) {
@@ -74,10 +78,10 @@ export class HomeComponent implements OnInit {
 
   updateCuisine() {
   	this.cuisineService.updateCuisine(this.newCuisine)
-  		.then(() => this.cuisineService.getCuisines()
-  			.then(cuisines => this.cuisines = cuisines));
-  	this.create = true;
-  	this.newCuisine = {title:""};
+    .then(() => this.cuisineService.getCuisines()
+      .then(cuisines => this.cuisines = cuisines));
+    this.create = true;
+    this.newCuisine = {title:""};
   }
 
   editRecipe(recipe) {

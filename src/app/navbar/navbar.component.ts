@@ -12,14 +12,16 @@ export class NavbarComponent implements OnInit {
 	isLoggedIn: boolean;
   isAdmin : boolean;
   user: {
+    id: -1,
     username:"",
     role:"",
   };
+  profileUrl = "/profile;uid=";
 
   constructor(private userService: UserServiceClient,
   	private router: Router,
     private constants: Constants) {
-    this.update();}
+    this.update(false);}
 
     logout() {
       this.userService.logout()
@@ -27,7 +29,7 @@ export class NavbarComponent implements OnInit {
       .then( () => window.location.reload());
     }
 
-    update() {
+    update(profile) {
       this.userService.currentUser()
       .then(user => this.user = user)
       .then(() => {
@@ -37,14 +39,17 @@ export class NavbarComponent implements OnInit {
         if (this.user.role.valueOf() == "ADMIN".valueOf()) {
           this.isAdmin = true;
         }
-
-
-      })
+      }).then(() =>{
+        if (profile) {
+          this.router.navigate(['profile']);
+        }
+      }
+      )
     }
 
 
     ngOnInit() {
-      this.update();
+      this.update(false);
 
     }
   }

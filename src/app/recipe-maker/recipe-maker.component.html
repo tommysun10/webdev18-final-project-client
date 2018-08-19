@@ -47,9 +47,10 @@
 		<li (click) = "selectVideo(video)" 
 		*ngFor="let video of videos" 
 		class = "list-group-item"
-		[ngClass]="{'active': video.id.videoId == selectedVideo.id.videoId}">
-			{{video.snippet.title}}
-			<img src="{{video.snippet.thumbnails.default.url}}">
+		[ngClass]="{true:'active', false:''}[selectedVideo && video.id.videoId==selectedVideo.id.videoId]">
+
+		{{video.snippet.title}}
+		<img src="{{video.snippet.thumbnails.default.url}}">
 	</li>
 </ul>
 
