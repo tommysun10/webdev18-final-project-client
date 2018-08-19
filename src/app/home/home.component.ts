@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
   		.then(() => this.cuisineService.getCuisines()
   			.then(cuisines => this.cuisines = cuisines));
   	this.create = true;
-  	this.newCuisine = {};
+  	this.newCuisine = {title:""};
   }
 
   editRecipe(recipe) {
