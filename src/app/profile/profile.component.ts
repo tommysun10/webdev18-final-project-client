@@ -34,6 +34,13 @@ export class ProfileComponent implements OnInit {
   })
 }
 
+  unlike(userId, recipeId) {
+    event.stopPropagation();
+    this.userService.unlikeRecipe(recipeId).then(res => {
+      this.userService.getRecipesLiked(userId).then(recipesLiked => this.recipesLiked = recipesLiked); 
+    })
+  }
+
   viewRecipe(recipe) {
     this.router.navigate(['recipe', {rid: recipe.id}]);
  }

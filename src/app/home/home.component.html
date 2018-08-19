@@ -38,6 +38,8 @@
     <span class="input-group-btn float-right">
       <button  *ngIf="user.role == 'PRO'" (click)="createRecipe()" type="button" class ="my-btn"><i class="fa fa-plus"> </i></button>
     </span>
+    <div class="filter"> <input [(ngModel)]="recipeTitle" placeholder="recipe title">
+      <button (click)="searchRecipe()" type="button" class="btn btn-primary">Search</button> </div>      
   </div>
 
 <div class="grid-container">
