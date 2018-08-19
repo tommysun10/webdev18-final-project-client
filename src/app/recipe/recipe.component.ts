@@ -5,41 +5,46 @@ import { UserServiceClient } from '../services/user.service.client';
 
 
 @Component({
-  selector: 'app-recipe',
-  templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+	selector: 'app-recipe',
+	templateUrl: './recipe.component.html',
+	styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
+	recipeId = -1;
+	recipe = {
+		likes:[],
+		chef: {
+			id:-1,
+		}
+	};
 
-  recipe = {}; 
-  cuisine = 'Asian Fusion';
-  videoSrc = '';
-  chef = {}; 
+	constructor(
+		private route: ActivatedRoute, 
+		private recipeService: RecipeServiceClient, 
+		private userService: UserServiceClient,
+		private router: Router) { }
 
-  usersLiked = []; 
+	likeRecipe(likedRecipe) {
+		this.userService.likeRecipe(likedRecipe.id)
+		.then( () => {
+			this.recipeService.getRecipeLikes(likedRecipe)
+			.then(likes => this.recipe.likes = likes); 
+		})
+	}
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeServiceClient, private userService: UserServiceClient) { }
+	goToChef() {
+		return this.router.navigate(['profile', {uid: this.recipe.chef.id}])
+	}
 
-  likeRecipe(likedRecipe) {
-    this.userService.likeRecipe(likedRecipe.id).then(resp => {
-      this.recipeService.getRecipe(likedRecipe.id).then(recipe => this.recipe = recipe); 
-    })
-  }
+	ngOnInit() {
+		this.recipeId = +this.route.snapshot.paramMap.get('rid');
+		this.recipeService.getRecipe(this.recipeId)
+		.then(recipe => this.recipe = recipe)
+		.then(() =>
+			this.recipeService.getRecipeLikes(this.recipeId)
+			.then(likes => this.recipe.likes = likes))
+		.then( () => this.recipeService.getChef(this.recipeId)
+			.then(chef => this.recipe.chef = chef))
 
-  ngOnInit() {
-     var recipeId = +this.route.snapshot.paramMap.get('rid');
-    this.recipeService.getRecipe(recipeId).then(recipe => {
-      this.recipe = recipe; 
-      this.videoSrc = recipe.youtubeUrl;
-      console.log(this.videoSrc);
-    })
-
-    this.recipeService.getRecipeLikes(recipeId).then(usersLiked => {
-      this.usersLiked = usersLiked; 
-      this.recipeService.getChef(recipeId).then(chef => {
-        this.chef = chef; 
-      })
-    })
-  }
-
+	}
 }

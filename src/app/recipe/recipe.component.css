@@ -4,5 +4,15 @@
 }
 
 .ingredient-list {
-  border-style: groove;
+	margin-left: 165px;
+	width: 375px;
+}
+
+.ingredients {
+	margin-left: 25px;
+	margin-bottom: 2px;
+}
+
+.box {
+	width: 750px;
 }
