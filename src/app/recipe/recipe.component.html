@@ -6,7 +6,7 @@
   <h1>{{recipe.title}}</h1>
   <h2>By: <label class="chef-name"(click)="goToChef()"> {{recipe.chef.username}}</label></h2>
   <button class="btn btn-success align-content-center like-btn"
-  (click)="likeRecipe(recipe)">Likes: {{recipe.likes.length}}</button>
+  (click)="likeRecipe(recipe)">Likes: {{recipe.likes.length}} <i class="fas fa-heart"> </i></button>
   <br/>
 </div>
 
