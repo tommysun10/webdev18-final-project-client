@@ -12,10 +12,16 @@ import { UserServiceClient } from '../services/user.service.client';
 export class RecipeComponent implements OnInit {
 	recipeId = -1;
 	recipe = {
+		description: "",
+		ingredients: [],
+		title: "",
 		likes: [],
 		chef: {
 			id: -1,
-		}
+			username: "",
+		},
+		youtubeUrl:"",
+		imageUrl: "",
 	};
 	curUser: {
 		username: '';

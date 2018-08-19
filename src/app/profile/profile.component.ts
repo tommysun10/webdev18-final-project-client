@@ -10,7 +10,13 @@ import { UserServiceClient } from '../services/user.service.client';
 })
 export class ProfileComponent implements OnInit {
 
-  user = {};
+  user = {
+  	username: "",
+  	firstName: "",
+  	lastName: "",
+  	email: "",
+  	role: ""
+  };
   sections = {};
   recipesLiked = []; 
   followers = []; 
