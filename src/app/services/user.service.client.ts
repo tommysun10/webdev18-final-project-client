@@ -68,6 +68,14 @@ export class UserServiceClient {
 			},
 		}).then(resp => resp.json());
 
+	findUserById = (userId) =>
+		fetch(this.constants.USER_URL + '/' + userId, {
+			method: 'get',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
+
 	deleteUser = (userId) =>
 		fetch(this.constants.USER_URL + '/' + userId, {
 			method: 'delete',
@@ -95,5 +103,38 @@ export class UserServiceClient {
 			},
 		})
 	}
+
+	follow = (userId) =>
+		fetch(this.constants.USER_URL + '/follow/' + userId, {
+			method: 'put',
+			credentials: 'include',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
+
+	getFollowing = (userId) =>
+		fetch(this.constants.USER_URL + '/' + userId + '/following', {
+			method: 'get',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
+
+	getFollowers = (userId) =>
+		fetch(this.constants.USER_URL + '/' + userId + '/followers', {
+			method: 'get',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
+
+	getRecipesLiked = (userId) =>
+		fetch(this.constants.USER_URL + '/' + userId + '/recipes', {
+			method: 'get',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
 
 }
