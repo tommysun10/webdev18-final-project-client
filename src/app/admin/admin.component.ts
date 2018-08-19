@@ -13,6 +13,11 @@ export class AdminComponent implements OnInit {
   newUser = {
     username: "",
     password: "",
+    lastName: "",
+    firstName: "",
+    phone: "",
+    email: "",
+    role: ""
   };
   curUser = {
     role: "",
