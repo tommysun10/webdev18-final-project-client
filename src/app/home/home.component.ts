@@ -18,13 +18,14 @@ export class HomeComponent implements OnInit {
   newCuisine = {
     title:''
   }; 
-  recipes = {}; 
+  recipes = []; 
   newRecipe = {title: String};
   loggedIn = false; 
   user = {
     role: ""
   }
   create = true;
+  recipeTitle = ""; 
 
 
   constructor(private router: Router,  private userService: UserServiceClient, private recipeService: RecipeServiceClient, private cuisineService: CuisineServiceClient) { }
@@ -38,6 +39,12 @@ export class HomeComponent implements OnInit {
       this.cuisineService.getCuisines().then(res => this.cuisines = res)
     })
     this.newCuisine = {title:''};
+  }
+
+  searchRecipe() {
+      this.recipeService.getRecipesForCuisine(this.selectedCuisine.id).then(recipes =>  {
+        this.recipes = recipes.filter(recipe => recipe.title.includes(this.recipeTitle));
+      })
   }
 
   selectCuisine(cuisine) {

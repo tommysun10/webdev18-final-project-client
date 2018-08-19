@@ -87,6 +87,8 @@
           <img class="recipeImage"
           src="{{recipe.imageUrl}}"/>
            <h5 class="recipeTitle"> {{recipe.title}} </h5>
+           <button *ngIf="isCurrentUser" (click)="unlike(user.id, recipe.id, $event)" type="button" class="btn btn-primary btn-block">Unlike</button>
+
     </div>
     </div>
 </div>
