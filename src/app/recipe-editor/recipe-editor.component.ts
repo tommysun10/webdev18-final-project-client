@@ -10,6 +10,7 @@ import { YoutubeServiceClient } from '../services/youtube.service.client';
 })
 export class RecipeEditorComponent implements OnInit {
 	recipe: {
+		description: "",
 		title: '',
 		ingredients: String[],
 		youtubeUrl: "",
@@ -32,10 +33,13 @@ export class RecipeEditorComponent implements OnInit {
 		}
 	}
 	youtube: {
-		items: [""]
+		items: [""],
+		search: ""
 	}
 	videos = [];
-	chef = {};
+	chef = {
+		username: "",
+	};
 
 	constructor(private recipeService: RecipeServiceClient,
 		private router: Router,
