@@ -17,6 +17,9 @@ export class RecipeComponent implements OnInit {
 			id:-1,
 		}
 	};
+	curUser: {
+		username:'';
+	};
 
 	constructor(
 		private route: ActivatedRoute, 
@@ -25,12 +28,16 @@ export class RecipeComponent implements OnInit {
 		private router: Router) { }
 
 	likeRecipe(likedRecipe) {
-		this.userService.likeRecipe(likedRecipe.id)
-		.then( () => {
-			this.recipeService.getRecipeLikes(likedRecipe)
-			.then(likes => this.recipe.likes = likes); 
-		}).then(()=>
-		window.location.reload());
+		if (this.curUser.username === '') {
+			this.userService.likeRecipe(likedRecipe.id)
+			.then( () => {
+				this.recipeService.getRecipeLikes(likedRecipe)
+				.then(likes => this.recipe.likes = likes); 
+			}).then(()=>
+			window.location.reload());
+		} else {
+			this.router.navigate(['login']);
+		}
 	}
 
 	goToChef() {
@@ -46,6 +53,8 @@ export class RecipeComponent implements OnInit {
 			.then(likes => this.recipe.likes = likes))
 		.then( () => this.recipeService.getChef(this.recipeId)
 			.then(chef => this.recipe.chef = chef))
+		.then( () => this.userService.currentUser()
+			.then(user => this.curUser = user));
 
 	}
 }
