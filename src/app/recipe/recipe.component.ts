@@ -34,7 +34,7 @@ export class RecipeComponent implements OnInit {
 		private router: Router) { }
 
 	likeRecipe(likedRecipe) {
-		if (this.curUser.username !== '') {
+		if (this.curUser.username === '') {
 			this.userService.likeRecipe(likedRecipe.id)
 				.then(() => {
 					this.recipeService.getRecipeLikes(likedRecipe.id)
