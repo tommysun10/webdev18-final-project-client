@@ -12,6 +12,10 @@ export class ProfileComponent implements OnInit {
 
   user = {};
   sections = {};
+  recipesLiked = []; 
+  followers = []; 
+  following = []; 
+  isCurrentUser = false; 
 
   constructor(private router: Router, 
     private userService: UserServiceClient, 
@@ -24,16 +28,55 @@ export class ProfileComponent implements OnInit {
       .then(user => this.user = user);
   }
 
+  follow(userId) {
+    this.userService.follow(userId).then(user => {
+      this.userService.getFollowers(userId).then(followers => this.followers = followers);
+  })
+}
+
+  viewRecipe(recipe) {
+    this.router.navigate(['recipe', {rid: recipe.id}]);
+ }
+
   logout() {
     this.userService.logout();
     this.router.navigate(['login']);
     window.location.reload();
   }
 
-  ngOnInit() {
-    this.userService.currentUser()
-      .then(user =>
-        this.user = user)
-    };
+  goToProfile(userId) {
+    this.router.navigate(['profile', {uid: userId}]);
+    window.location.reload();
+  }
 
+  ngOnInit() {
+    var userId = +this.route.snapshot.paramMap.get('uid');
+    if (userId > 0) {
+      this.userService.currentUser()
+      .then(user => { 
+        if (user.id == userId) {
+          this.isCurrentUser = true; 
+        }
+      }); 
+      this.userService.findUserById(userId).then(user => {
+        this.user = user; 
+        this.userService.getFollowing(userId).then(following => this.following = following); 
+        this.userService.getFollowers(userId).then(followers => this.followers = followers); 
+        this.userService.getRecipesLiked(userId).then(recipesLiked => this.recipesLiked = recipesLiked); 
+      }) 
+    } 
+    else {
+      this.isCurrentUser = true; 
+      this.userService.currentUser()
+      .then(user => {
+        this.user = user; 
+        this.userService.getFollowing(user.id).then(following => this.following = following); 
+        this.userService.getFollowers(user.id).then(followers => this.followers = followers); 
+        this.userService.getRecipesLiked(user.id).then(recipesLiked => this.recipesLiked = recipesLiked); 
+      })
+    };
+    }
+
+    
+    
 }

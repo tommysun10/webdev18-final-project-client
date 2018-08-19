@@ -7,8 +7,6 @@
 }  
 
 .title {
-    height: 100%;
-    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -23,4 +21,30 @@
     margin-bottom: 5px;
     justify-content: center;
     
+}
+
+.recipesLiked {
+    margin-bottom: 10px; 
+    border: .5px solid rgb(0, 0, 0);
+    margin-right: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.recipeImage {
+    margin-top: 25px;
+}
+
+.recipeTitle {
+    color: #42a4f4;
+    text-decoration: underline;
+}
+
+.follow-list {
+    margin-bottom: 10px; 
+    border: .5px solid rgb(0, 0, 0);
+    margin-right: 10px;
+    border-radius: 10px;
+    text-align: center;
+    list-style-type: none;
 }

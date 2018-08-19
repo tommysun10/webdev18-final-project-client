@@ -1,4 +1,8 @@
-<div class="container">
+<div class="row">
+  <div class="col-1">
+  </div>
+
+<div class="container col-8">
   <h1 class="title">Hi {{user.firstName}}</h1>
   <div class="wbdv-form-group row">
     <label for="username" class="col-sm-2 col-form-label">Username:</label>
@@ -6,7 +10,7 @@
       <input [(ngModel)]="user.username" class="form-control" readonly=true>
     </div>
   </div>
-  <div class="wbdv-form-group row">
+  <div *ngIf="isCurrentUser" class="wbdv-form-group row">
     <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
     <div class="col-sm-10">
       <input [(ngModel)]="user.password" class="form-control" placeholder="Password">
@@ -24,7 +28,7 @@
       <input [(ngModel)]="user.lastName" class="form-control" placeholder="last name">
     </div>
   </div>
-  <div class="wbdv-form-group row">
+  <div *ngIf="isCurrentUser" class="wbdv-form-group row">
     <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
     <div class="col-sm-10">
       <input [(ngModel)]="user.phone" class="form-control" placeholder="xxx-xxx-xxxx">
@@ -42,11 +46,48 @@
       <input [(ngModel)]="user.role" class="form-control" readonly=true>
     </div>
   </div>
-  <button (click)="updateUser()" type="button" class="btn btn-primary btn-block">Update</button>
-  <button (click)="logout()" type="button" class="btn btn-primary btn-block">Logout</button>
+
+  <div class="wbdv-form-group row">
+      <label class="col-sm-2"></label>
+      
+      <div class="row">
+        <div class="col-sm-6">
+          <label>Following:</label>
+            <ul class="list-group">
+              <li class="follow-list" *ngFor="let follow of following" (click)="goToProfile(follow.id)">
+                {{follow.username}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+              <label>Followers:</label>
+                <ul class="list-group">
+                  <li class="follow-list" *ngFor="let follower of followers" (click)="goToProfile(follower.id)">
+                    {{follower.username}}
+                  </li>
+                </ul>
+              </div>
+        </div>
+      
+    </div>
+
+  <button *ngIf="isCurrentUser" (click)="updateUser()" type="button" class="btn btn-primary btn-block">Update</button>
+  <button *ngIf="isCurrentUser" (click)="logout()" type="button" class="btn btn-primary btn-block">Logout</button>
+  <button *ngIf="!isCurrentUser" (click)="follow(user.id)" type="button" class="btn btn-primary btn-block">Follow</button>
 
   <a *ngIf="user.role === 'ADMIN'" class="btn btn-primary btn-block" routerLink="/admin" >
     Admin Page
   </a>
 
+</div>
+<div class="col-3">
+    <h3 class="title">Recipes Liked</h3>
+    <div *ngFor="let recipe of recipesLiked">
+        <div (click)="viewRecipe(recipe)" class="recipesLiked">
+          <img class="recipeImage"
+          src="{{recipe.imageUrl}}"/>
+           <h5 class="recipeTitle"> {{recipe.title}} </h5>
+    </div>
+    </div>
+</div>
 </div>
