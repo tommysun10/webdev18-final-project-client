@@ -1,15 +1,18 @@
 <div class="container-fluid text-center box">
-  <h2>{{recipe.title}}</h2>
-  <h4>By: <label (click)="goToChef()"> {{recipe.chef.username}}</label></h4>
-  <button class="btn btn-success align-content-center"
+  <h1>{{recipe.title}}</h1>
+  <h2>By: <label class="chef-name"(click)="goToChef()"> {{recipe.chef.username}}</label></h2>
+  <button class="btn btn-success align-content-center like-btn"
   (click)="likeRecipe(recipe)">Likes: {{recipe.likes.length}}</button>
   <br/>
 
-  <a href="https://www.youtube.com/watch?v={{recipe.youtubeUrl}}"> Link to Video</a>
+
+  <a href="https://www.youtube.com/watch?v={{recipe.youtubeUrl}}"> <img src="{{recipe.imageUrl}}"></a>
+
+  <h6 class="video-description"> Click Picture to watch video now!</h6>
   <!--   <iframe width="560" height="315" src="https://www.youtube.com/embed/{{recipe.youtubeUrl}}"allow="autoplay; encrypted-media"></iframe> -->
 
   <div class="ingredient-list">
-    <h6>Ingredient List:</h6>
+    <h4>Ingredient List:</h4>
     <ul class="list-group">
       <li class="list-group-item ingredients" *ngFor="let ingredient of recipe.ingredients">
         {{ingredient}}
