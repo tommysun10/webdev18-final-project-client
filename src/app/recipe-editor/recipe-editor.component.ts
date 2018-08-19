@@ -11,7 +11,7 @@ import { YoutubeServiceClient } from '../services/youtube.service.client';
 export class RecipeEditorComponent implements OnInit {
 	recipe: {
 		title: '',
-		ingredients: [],
+		ingredients: String[],
 		youtubeUrl: "",
 		imageUrl: ""
 	};
@@ -32,7 +32,7 @@ export class RecipeEditorComponent implements OnInit {
 		}
 	}
 	youtube: {
-		items: []
+		items: ["a"]
 	}
 	videos = [];
 	chef = {};

@@ -53,7 +53,10 @@ export class AdminComponent implements OnInit {
   }
 
   emptyFields() {
-  	this.newUser = {};
+  	this.newUser = {
+      username:"",
+      password:"",
+    };
   }
 
   deleteUser(user) {

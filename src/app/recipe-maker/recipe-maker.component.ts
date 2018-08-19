@@ -46,7 +46,7 @@ export class RecipeMakerComponent implements OnInit {
       }
     }
   }
-  selected: false;
+  selected = false;
 
   videos: {};
 
