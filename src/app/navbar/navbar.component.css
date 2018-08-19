@@ -1,0 +1,15 @@
+.navbar {
+    margin-bottom: 8px;
+    padding:0;
+    background-image: 'none';
+    background-color:  #4b9cdf;
+  
+}
+
+.navbar-brand {
+    margin-left: 10px;
+}
+
+.header {
+    size: 200%;
+}

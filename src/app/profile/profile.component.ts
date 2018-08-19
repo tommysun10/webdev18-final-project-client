@@ -38,7 +38,14 @@ export class ProfileComponent implements OnInit {
     this.userService.follow(userId).then(user => {
       this.userService.getFollowers(userId).then(followers => this.followers = followers);
   })
-}
+  }
+
+  unfollow(userId) {
+    event.stopPropagation();
+    this.userService.unfollow(userId).then(user => {
+      this.userService.getFollowing(userId).then(following => this.following = following);
+  })
+  }
 
   unlike(userId, recipeId) {
     event.stopPropagation();
