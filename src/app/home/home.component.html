@@ -4,7 +4,7 @@
       <h1> Cuisines </h1>
       <ul class="list-group">
         <div class = "input-group">
-          <input class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
+          <input *ngIf="user.role =='PRO'" class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
           <span class="input-group-btn">
             <button *ngIf="create && user.role =='PRO'" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
             <button *ngIf="!create && user.role =='PRO'" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
