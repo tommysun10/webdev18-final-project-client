@@ -46,6 +46,7 @@ export class RecipeMakerComponent implements OnInit {
       }
     }
   }
+  selected: false;
 
   videos: {};
 
@@ -59,6 +60,15 @@ export class RecipeMakerComponent implements OnInit {
   createRecipe() {
   	this.recipe.ingredients = this.ingredients.split("\n");
     this.recipe.youtubeUrl = 'https://www.youtube.com/watch?v=' + this.selectedVideo.id.videoId;
+    if (this.recipe.title == '') {
+      alert('Please Enter a Title');
+      return;
+    }
+    if (!this.selected) {
+      alert("Please search and select a Youtube Video");
+      return;
+    }
+    this.recipe.youtubeUrl = this.selectedVideo.id.videoId;
     this.recipe.imageUrl = this.selectedVideo.snippet.thumbnails.default.url;
 
     this.recipeService.createRecipe(this.cuisineId, this.recipe)
@@ -72,6 +82,7 @@ export class RecipeMakerComponent implements OnInit {
   }
 
   selectVideo(video) {
+    this.selected = true;
     this.selectedVideo = video;
   }
 

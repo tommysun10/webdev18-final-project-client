@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="curUser.role === 'ADMIN'">
   <div class="col-12">
     <h2>Users</h2>
     <table class="table table-hover">
@@ -28,8 +28,8 @@
               <option value="PRO">Professional</option>
             </select>
           </th>
-          <th> <button (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button></th>
-          <th> <button (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button> </th>
+          <th> <button *ngIf="!editMode" (click)="createUser()" type="button" class="btn btn-primary btn-block">Create</button></th>
+          <th> <button *ngIf="editMode" (click)="saveUser()" type="button" class="btn btn-primary btn-block">Save</button> </th>
         </tr>
       </thead>
       <tbody *ngFor="let user of users">
@@ -47,4 +47,9 @@
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="container-fluid" *ngIf="curUser.role !== 'ADMIN'">
+  <h1> Admin Page</h1>
+  <h3> Please Log in as Admin to access Admin page </h3>
 </div>

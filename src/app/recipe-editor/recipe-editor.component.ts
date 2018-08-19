@@ -52,6 +52,11 @@ export class RecipeEditorComponent implements OnInit {
 			this.recipe.imageUrl = this.selectedVideo.snippet.thumbnails.default.url;
 		}
 
+		if (this.recipe.title == "") {
+			alert("Title is required");
+			return;
+		}
+
 		this.recipeService.updateRecipe(this.recipe)
 		.then(()=> this.router.navigate(['home']));
 
