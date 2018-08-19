@@ -1,38 +1,24 @@
-<div class="row">
-  <div class="col-2">
+<div class="container-fluid text-center box">
+  <h2>{{recipe.title}}</h2>
+  <h4>By: <label (click)="goToChef()"> {{recipe.chef.username}}</label></h4>
+  <button class="btn btn-success align-content-center"
+  (click)="likeRecipe(recipe)">Likes: {{recipe.likes.length}}</button>
+  <br/>
+
+  <a href="https://www.youtube.com/watch?v={{recipe.youtubeUrl}}"> Link to Video</a>
+  <!--   <iframe width="560" height="315" src="https://www.youtube.com/embed/{{recipe.youtubeUrl}}"allow="autoplay; encrypted-media"></iframe> -->
+
+  <div class="ingredient-list">
+    <h6>Ingredient List:</h6>
+    <ul class="list-group">
+      <li class="list-group-item ingredients" *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient}}
+
+      </li>
+    </ul>
   </div>
+  <br/>
 
-  <div class="col-8 text-center">
-    <h2>{{recipe.title}}</h2>
-    <h4>Inspired by cuisine</h4>
-    <button class="btn btn-success align-content-center"
-            (click)="likeRecipe(recipe)">Like</button>
-    <i class="glyphicon glyphicon-heart"></i>
-    <p> Likes: {{recipe.likes.length}}
-      <!--<a href="#"><span class="glyphicon glyphicon-empty-heart"></span></a>-->
-    </p>
+  {{recipe.description}}
 
-    <!-- <iframe width="700" height="400" 
-        [ng-src]="recipe.youtubeUrl">
-     </iframe>   -->
-
-    <div class="ingredient-list">
-      <h6>Ingredient List:</h6>
-      <ul class="list-group">
-        <li class="text-left" *ngFor="let ingredient of recipe.ingredients">
-          {{ingredient}}
-        </li>
-      </ul>
-    </div>
-    <div class="description">
-      <p>{{recipe.description}}</p>
-    </div>
-
-  </div>
-
-  <div class="col-2 text-center">
-    <h4>Chef Information:</h4>
-    <p class="text-center">{{recipe.chef.username}}</p>
-    <a routerLink="/profile">See {{recipe.chef.username}}'s profile</a>
-  </div>
 </div>
