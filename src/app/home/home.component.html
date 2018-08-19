@@ -6,8 +6,8 @@
         <div class = "input-group">
           <input class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
           <span class="input-group-btn">
-            <button *ngIf="create" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
-            <button *ngIf="!create" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
+            <button *ngIf="create && user.role =='PRO'" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
+            <button *ngIf="!create && user.role =='PRO'" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
           </span>
         </div>
         <li (click)="selectCuisine(cuisine)" [ngClass]="{'active': cuisine.id == selectedCuisine.id}" *ngFor="let cuisine of cuisines"
