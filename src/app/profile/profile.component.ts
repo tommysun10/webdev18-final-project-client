@@ -31,7 +31,8 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(this.user).then(() => {
       return this.userService.currentUser();
     })
-      .then(user => this.user = user);
+      .then(user => this.user = user)
+      .then(()=> alert("Update Successful"));
   }
 
   follow(userId) {
