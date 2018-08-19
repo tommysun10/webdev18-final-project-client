@@ -42,14 +42,14 @@ export class HomeComponent implements OnInit {
   }
 
   searchRecipe() {
-    this.recipeService.getRecipesForCuisine(this.selectedCuisine.id).then(recipes =>  {
-      this.recipes = recipes.filter(recipe => recipe.title.includes(this.recipeTitle));
-    })
+    this.recipeService.getRecipesForCuisine(this.selectedCuisine.id)
+      .then(recipes => this.recipes = recipes.filter(recipe => recipe.title.toLowerCase().includes(this.recipeTitle.toLowerCase())));
   }
 
   selectCuisine(cuisine) {
     this.selectedCuisine = cuisine; 
     this.recipeService.getRecipesForCuisine(cuisine.id).then(recipes => this.recipes = recipes);
+    this.recipeTitle = "";
   }
 
   createRecipe() {
