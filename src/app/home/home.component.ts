@@ -31,10 +31,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,  private userService: UserServiceClient, private recipeService: RecipeServiceClient, private cuisineService: CuisineServiceClient) { }
 
   createCuisine() {
-    if (this.newCuisine.title === '') {
-      alert("Please Enter Cuisine Name");
-      return;
-    }
+    // if (this.newCuisine.title === '') {
+    //   alert("Please Enter Cuisine Name");
+    //   return;
+    // }
     this.cuisineService.createCuisine(this.newCuisine).then(res => {
       this.cuisineService.getCuisines().then(res => this.cuisines = res)
     })
