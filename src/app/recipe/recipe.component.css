@@ -34,8 +34,8 @@
 }
 
 .img {
-	width: auto;
-	height: 90%;
+	width: 50%;
+	height: 50%;
 	margin-right: 60%;
 	margin-left: 10% ;
 	display: block;
@@ -50,8 +50,10 @@
 }  
 
 .recipe-overview {
-	border: 1px #ececec;
 	font-size: 90%;
 	font-style: normal;
 	display: block;
+	margin-left: 20%;
+	margin-right: 20%;
+	overflow-x: hidden;
 }
