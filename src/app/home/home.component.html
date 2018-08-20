@@ -4,10 +4,10 @@
       <h1> Cuisines </h1>
       <ul class="list-group">
         <div class = "input-group">
-          <input class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
+          <input *ngIf="user.role == 'PRO'" class="form-control" [(ngModel)]="newCuisine.title" placeholder="Title">
           <span class="input-group-btn">
-            <button *ngIf="create" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
-            <button *ngIf="!create" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
+            <button *ngIf="create && user.role == 'PRO'" (click)="createCuisine()" type="button" class="btn btn-success btn-block">Create</button>
+            <button *ngIf="!create && user.role == 'PRO'" (click)="updateCuisine()" type="button" class="btn btn-success btn-block">Update</button>
           </span>
         </div>
         <li (click)="selectCuisine(cuisine)" [ngClass]="{'active': cuisine.id == selectedCuisine.id}" *ngFor="let cuisine of cuisines"
@@ -40,7 +40,7 @@
     </span>
     <div class="filter"> 
       <input [(ngModel)]="recipeTitle" class="form-control" placeholder="Search Recipe">
-      <button (click)="searchRecipe()" type="button" class="btn btn-block">Search</button> 
+      <button (click)="searchRecipe()" type="button" class="btn btn-block btn-secondary">Search</button> 
     </div>      
   </div>
 
