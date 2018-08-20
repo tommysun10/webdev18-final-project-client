@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       alert("Please Enter Cuisine Name");
       return;
     }
-    this.cuisineService.createCuisine(this.newCuisine.title).then(res => {
+    this.cuisineService.createCuisine(this.newCuisine).then(res => {
       this.cuisineService.getCuisines().then(res => this.cuisines = res)
     })
     this.newCuisine.title = '';
