@@ -156,4 +156,12 @@ export class UserServiceClient {
 			},
 		}).then(resp => resp.json());
 
+	getRecipesOwned = (userId) =>
+		fetch(this.constants.USER_URL + '/' + userId + '/recipesOwned', {
+			method: 'get',
+			headers: {
+				'Content-type': 'application/json'
+			},
+		}).then(resp => resp.json());
+
 }
