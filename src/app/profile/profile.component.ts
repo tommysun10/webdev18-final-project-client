@@ -19,9 +19,11 @@ export class ProfileComponent implements OnInit {
   };
   sections = {};
   recipesLiked = []; 
+  recipesOwned = [];
   followers = []; 
   following = []; 
   isCurrentUser = false; 
+  isChef = false; 
 
   constructor(private router: Router, 
     private userService: UserServiceClient, 
@@ -59,6 +61,11 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['recipe', {rid: recipe.id}]);
  }
 
+ editRecipe(recipeId) {
+  event.stopPropagation();
+  this.router.navigate(['recipe-editor',{rid: recipeId}]);
+ }
+
   logout() {
     this.userService.logout();
     this.router.navigate(['login']);
@@ -94,10 +101,12 @@ export class ProfileComponent implements OnInit {
         this.userService.getFollowing(user.id).then(following => this.following = following); 
         this.userService.getFollowers(user.id).then(followers => this.followers = followers); 
         this.userService.getRecipesLiked(user.id).then(recipesLiked => this.recipesLiked = recipesLiked); 
+        this.userService.getRecipesOwned(user.id).then(recipesOwned => {
+          this.recipesOwned = recipesOwned; 
+          this.isChef = this.user.role=="PRO";
+          console.log("is chef = " + this.isChef);
       })
-    };
+    });
     }
-
-    
-    
+  }
 }
